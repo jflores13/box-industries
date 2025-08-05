@@ -20,7 +20,7 @@ import { Head, Link } from '@inertiajs/vue3';
                 <div
                     class="overflow-hidden bg-white shadow-sm sm:rounded-lg"
                 >
-                    <Link href="/services" class="p-6 text-gray-900">
+                    <Link href="/admin/services" class="p-6 text-gray-900">
                         Services
                     </Link>
                 </div>

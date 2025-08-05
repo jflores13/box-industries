@@ -17,12 +17,12 @@ const form = useForm({
 });
 
 function submit() {
-    form.put(`/services/${props.service.id}`);
+    form.put(`/admin/services/${props.service.id}`);
 }
 
 function destroy() {
     if (confirm('Are you sure you want to delete this service?')) {
-        form.delete(`/services/${props.service.id}`);
+        form.delete(`/admin/services/${props.service.id}`);
     }
 }
 </script>
@@ -70,7 +70,7 @@ function destroy() {
                         >
                             Delete
                         </button>
-                        <Link :href="'/services'" class="px-4 py-2 bg-gray-300 rounded">Cancel</Link>
+                        <Link :href="'/admin/services'" class="px-4 py-2 bg-gray-300 rounded">Cancel</Link>
                     </div>
                 </form>
             </div>

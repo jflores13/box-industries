@@ -22,7 +22,7 @@ defineProps({
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="flex justify-end mb-4">
                     <Link
-                        href="/services/create"
+                        href="/admin/services/create"
                         class="px-4 py-2 bg-blue-600 text-white rounded"
                     >
                         New Service
@@ -48,7 +48,7 @@ defineProps({
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap space-x-2">
                                     <Link
-                                        :href="`/services/${service.id}/edit`"
+                                        :href="`/admin/services/${service.id}/edit`"
                                         class="text-indigo-600 hover:text-indigo-900"
                                     >
                                         Edit

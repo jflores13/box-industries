@@ -11,7 +11,18 @@ class ServiceController extends Controller
 {
     public function index(): Response
     {
+        // Admin listing
         return Inertia::render('Services/Index', [
+            'services' => Service::all(),
+        ]);
+    }
+
+    /**
+     * Display a public listing of the services.
+     */
+    public function publicIndex(): Response
+    {
+        return Inertia::render('Public/Services/Index', [
             'services' => Service::all(),
         ]);
     }

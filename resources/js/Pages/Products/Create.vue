@@ -15,7 +15,7 @@ const form = useForm({
 });
 
 function submit() {
-    form.post('/products');
+    form.post('/admin/products');
 }
 </script>
 

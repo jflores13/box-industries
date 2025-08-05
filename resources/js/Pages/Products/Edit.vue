@@ -23,12 +23,12 @@ const form = useForm({
 });
 
 function submit() {
-    form.put(`/products/${props.product.id}`);
+    form.put(`/admin/products/${props.product.id}`);
 }
 
 function destroy() {
     if (confirm('Are you sure you want to delete this product?')) {
-        form.delete(`/products/${props.product.id}`);
+        form.delete(`/admin/products/${props.product.id}`);
     }
 }
 </script>
@@ -114,7 +114,7 @@ function destroy() {
                         >
                             Delete
                         </button>
-                        <Link :href="'/products'" class="px-4 py-2 bg-gray-300 rounded">Cancel</Link>
+                        <Link :href="'/admin/products'" class="px-4 py-2 bg-gray-300 rounded">Cancel</Link>
                     </div>
                 </form>
             </div>

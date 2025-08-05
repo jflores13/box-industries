@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Home/Index', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -16,9 +16,13 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
+// Public product & service listings
+Route::get('/products', [ProductController::class, 'publicIndex'])->name('products.public.index');
+Route::get('/services', [ServiceController::class, 'publicIndex'])->name('services.public.index');
+
+Route::get('/admin/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', \App\Http\Middleware\EnsureAdmin::class])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -26,9 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'verified', \App\Http\Middleware\EnsureAdmin::class])->group(function () {
-    Route::resource('services', ServiceController::class);
-    Route::resource('products', ProductController::class);
-});
+Route::middleware(['auth', 'verified', \App\Http\Middleware\EnsureAdmin::class])
+    ->prefix('admin')
+    ->group(function () {
+        Route::resource('services', ServiceController::class);
+        Route::resource('products', ProductController::class);
+    });
 
 require __DIR__.'/auth.php';

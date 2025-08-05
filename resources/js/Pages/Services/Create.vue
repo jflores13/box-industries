@@ -9,7 +9,7 @@ const form = useForm({
 });
 
 function submit() {
-    form.post('/services');
+    form.post('/admin/services');
 }
 </script>
 

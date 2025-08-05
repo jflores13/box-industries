@@ -11,7 +11,18 @@ class ProductController extends Controller
 {
     public function index(): Response
     {
+        // Admin listing
         return Inertia::render('Products/Index', [
+            'products' => Product::all(),
+        ]);
+    }
+
+    /**
+     * Display a public listing of the products.
+     */
+    public function publicIndex(): Response
+    {
+        return Inertia::render('Public/Products/Index', [
             'products' => Product::all(),
         ]);
     }
