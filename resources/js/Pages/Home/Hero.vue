@@ -1,7 +1,7 @@
 <template>
   <section
     class="relative w-full h-screen bg-cover bg-center"
-    style="background-image: url('');"
+    style="background-image: url('/img/BOX-60.jpg');"
   >
     <!-- Dark overlay -->
     <span class="absolute inset-0 bg-black/60"></span>
@@ -22,12 +22,12 @@
         so you don’t have to.
       </h1>
 
-      <a
-        href="#products"
-        class="mt-10 inline-block bg-yellow-400 text-gray-900 font-semibold px-10 py-4 rounded"
+      <Link
+        href="/products"
+        class="mt-10 inline-block bg-yellow-400 text-gray-900 font-semibold px-12 py-4 rounded hover:bg-yellow-500 transition-colors duration-300 max-w-fit"
       >
         Our Products
-      </a>
+      </Link>
     </div>
 
     <!-- WhatsApp floating button -->
@@ -38,5 +38,6 @@
 </template>
 
 <script setup>
-// No script logic needed for static hero
+import { Link } from '@inertiajs/vue3';
+
 </script>
