@@ -14,6 +14,10 @@ const props = defineProps({
         type: Array,
         default: () => [],
     },
+    carouselProducts: {
+        type: Array,
+        default: () => [],
+    },
 });
 
 // Optional: see if a user is logged-in to show admin links
@@ -28,7 +32,7 @@ defineOptions({ layout: AppLayout });
   <Head title="Home" />
   <Hero />
   <PartnersAndCompany />
-  <ProductsCarousel />
+  <ProductsCarousel :products="carouselProducts" />
   <NewGeneration />
   <LearnMore />
   <TheFooter mode="dark" />

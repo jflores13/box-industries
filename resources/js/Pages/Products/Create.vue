@@ -12,6 +12,9 @@ const form = useForm({
     image_src: '',
     booklet_src: '',
     product_id: '',
+    category: '',
+    tags: '',
+    on_carrousel: false,
 });
 
 function submit() {
@@ -86,6 +89,23 @@ function submit() {
                         <label class="block text-sm font-medium text-gray-700">Product ID</label>
                         <input v-model="form.product_id" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                         <span v-if="form.errors.product_id" class="text-red-500 text-xs">{{ form.errors.product_id }}</span>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Category</label>
+                        <input v-model="form.category" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+                        <span v-if="form.errors.category" class="text-red-500 text-xs">{{ form.errors.category }}</span>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Tags</label>
+                        <input v-model="form.tags" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+                        <span v-if="form.errors.tags" class="text-red-500 text-xs">{{ form.errors.tags }}</span>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input id="on_carrousel" v-model="form.on_carrousel" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded" />
+                        <label for="on_carrousel" class="ml-2 block text-sm text-gray-700">Show on Carousel</label>
                     </div>
 
                     <div class="flex justify-end">
