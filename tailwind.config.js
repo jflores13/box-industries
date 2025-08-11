@@ -17,6 +17,7 @@ export default {
             },
             colors: {
                 'box-yellow': '#FFD700',
+                'box-yellow-light': '#FCFA4E',
                 'box-brown': '#44260A',
                 'box-light-gray': '#F2F2F2',
             },

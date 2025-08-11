@@ -11,15 +11,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <section class="bg-box-brown py-12">
+  <section class="bg-box-light-gray py-12">
     <div class="overflow-x-auto">
       <div
-        class="flex gap-4 px-4 md:px-10 lg:px-20 snap-x snap-mandatory"
+        class="grid grid-flow-col auto-cols-max gap-4 px-4 md:px-10 lg:px-20 snap-x snap-mandatory"
       >
         <div
           v-for="product in products"
           :key="product.id"
-          class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 snap-start"
+          class="flex-shrink-0 w-full md:w-1/3 snap-start"
         >
           <Product :product="product" />
         </div>

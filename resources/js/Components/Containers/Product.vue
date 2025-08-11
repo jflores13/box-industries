@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div>
-      <img class="w-full h-auto object-cover" :src="product.image_src" alt="Product Image" />
+  <div class="w-full h-full">
+    <div class="aspect-square w-full">
+      <img class="w-full h-full object-cover" :src="product.image_src" alt="Product Image" />
     </div>
     <div>
       <h3>{{ product.name }}</h3>
