@@ -1,7 +1,7 @@
 
 <template>
   <section class="bg-[#3a2000] text-white py-12">
-    <div class="max-w-5xl mx-auto px-4 md:hidden">
+    <div class="max-w-6xl mx-auto px-4 md:hidden">
       <!-- Slide image -->
       <div class="w-full aspect-[3/2] overflow-hidden mb-10">
         <img
@@ -35,7 +35,7 @@
         ></div>
       </div>
     </div>
-    <div class="hidden md:block max-w-5xl mx-auto px-4">
+    <div class="hidden md:block max-w-6xl mx-auto px-4">
       <div class="grid grid-cols-3 gap-4">
         <div v-for="slide in slides" :key="slide.title" class="font-medium ">
           <!-- Square image wrapper -->
