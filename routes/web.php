@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -10,6 +11,8 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Home/Index', [
         'canLogin' => Route::has('login'),
+        'carouselProducts' => Product::where('on_carrousel', true)->get(),
+        'products' => Product::all(),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,

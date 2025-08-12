@@ -30,7 +30,7 @@ defineProps({
                 </div>
 
                 <div class="bg-white shadow-sm sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200 shadow">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -41,7 +41,7 @@ defineProps({
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody v-if="products.length > 0" class="bg-white divide-y divide-gray-200">
                             <tr v-for="product in products" :key="product.id">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{ product.name }}
@@ -53,6 +53,13 @@ defineProps({
                                     >
                                         Edit
                                     </Link>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody v-else class="p-6 text-center text-gray-500">
+                            <tr class="flex">
+                                <td class="flex px-6 py-4 whitespace-nowrap">
+                                    No products found.
                                 </td>
                             </tr>
                         </tbody>

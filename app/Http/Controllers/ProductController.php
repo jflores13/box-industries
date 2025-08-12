@@ -44,6 +44,9 @@ class ProductController extends Controller
             'image_src' => ['nullable', 'string', 'max:255'],
             'booklet_src' => ['nullable', 'string', 'max:255'],
             'product_id' => ['nullable', 'string', 'max:255'],
+            'category' => ['nullable', 'string', 'max:255'],
+            'tags' => ['nullable', 'string'],
+            'on_carrousel' => ['sometimes', 'boolean'],
         ]);
 
         Product::create($validated);
@@ -70,6 +73,9 @@ class ProductController extends Controller
             'image_src' => ['nullable', 'string', 'max:255'],
             'booklet_src' => ['nullable', 'string', 'max:255'],
             'product_id' => ['nullable', 'string', 'max:255'],
+            'category' => ['nullable', 'string', 'max:255'],
+            'tags' => ['nullable', 'string'],
+            'on_carrousel' => ['sometimes', 'boolean'],
         ]);
 
         $product->update($validated);

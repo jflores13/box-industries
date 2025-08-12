@@ -19,5 +19,12 @@ class Product extends Model
         'image_src',
         'booklet_src',
         'product_id',
+        'category',
+        'tags',
+        'on_carrousel',
+    ];
+
+    protected $casts = [
+        'on_carrousel' => 'boolean',
     ];
 }
