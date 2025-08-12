@@ -19,6 +19,7 @@ export default {
                 'box-yellow': '#FFD700',
                 'box-yellow-light': '#FCFA4E',
                 'box-brown': '#44260A',
+                'box-brown-light': '#5A483C',
                 'box-light-gray': '#F2F2F2',
             },
         },

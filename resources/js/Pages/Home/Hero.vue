@@ -31,7 +31,7 @@
     </div>
 
     <!-- WhatsApp floating button -->
-    <WhatsappButton class="w-10 h-10 mb-10 mr-10" />
+    <WhatsappButton class="w-10 h-10 mb-10 mr-10 drop-shadow-md" />
   </section>
 </template>
 

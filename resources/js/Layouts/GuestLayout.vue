@@ -1,5 +1,6 @@
 <script setup>
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import BlackLogo from '@/Components/Images/BlackLogo.vue';
 import { Link } from '@inertiajs/vue3';
 </script>
 
@@ -9,7 +10,7 @@ import { Link } from '@inertiajs/vue3';
     >
         <div>
             <Link href="/">
-                <ApplicationLogo class="h-20 w-20 fill-current text-gray-500" />
+                <BlackLogo class="h-20 w-20 fill-current text-gray-500" />
             </Link>
         </div>
 
