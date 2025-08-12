@@ -25,9 +25,9 @@
           <div class="flex justify-between items-center gap-2">
             <p>Follow Us</p>
             <div class="flex items-center justify-center gap-2">
-              <Facebook class="w-6 h-6" />
-              <Instagram class="w-6 h-6" />
-              <LinkedIn class="w-6 h-6" />
+              <Facebook mode="light" class="w-6 h-6" />
+              <Instagram mode="light" class="w-6 h-6" />
+              <LinkedIn mode="light" class="w-6 h-6" />
             </div>
           </div>
           <div>
