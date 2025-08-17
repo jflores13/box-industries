@@ -22,6 +22,9 @@ Route::get('/', function () {
 // Public product & service listings
 Route::get('/products', [ProductController::class, 'publicIndex'])->name('products.public.index');
 Route::get('/services', [ServiceController::class, 'publicIndex'])->name('services.public.index');
+Route::get('/contact', function () {
+    return Inertia::render('Contact/Index');
+})->name('contact.index');
 
 Route::get('/admin/dashboard', function () {
     return Inertia::render('Dashboard');
