@@ -5,6 +5,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PartnerController;
 use App\Models\Product;
+use App\Models\Partner;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -14,6 +15,7 @@ Route::get('/', function () {
         'canLogin' => Route::has('login'),
         'carouselProducts' => Product::where('on_carrousel', true)->get(),
         'products' => Product::all(),
+        'partners' => Partner::orderBy('sort_order')->get(),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
@@ -43,6 +45,9 @@ Route::middleware(['auth', 'verified', \App\Http\Middleware\EnsureAdmin::class])
     ->group(function () {
         Route::resource('services', ServiceController::class);
         Route::resource('products', ProductController::class);
+        
+        // Custom partner routes BEFORE resource routes to avoid conflicts
+        Route::patch('partners/order', [\App\Http\Controllers\PartnerOrderController::class, 'update'])->name('partners.order');
         Route::resource('partners', PartnerController::class);
     });
 

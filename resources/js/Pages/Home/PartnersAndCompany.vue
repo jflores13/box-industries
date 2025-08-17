@@ -1,5 +1,10 @@
 <script setup>
-import SonyLogo from '@/Components/Images/SonyLogo.vue';
+const props = defineProps({
+    partners: {
+        type: Array,
+        default: () => [],
+    },
+});
 </script>
 
 <template>
@@ -9,11 +14,13 @@ import SonyLogo from '@/Components/Images/SonyLogo.vue';
 
       <div class="overflow-hidden py-4 w-full">
         <div class="marquee flex items-center gap-20 whitespace-nowrap">
-          <!-- duplicate six logos four times for seamless loop on wide screens -->
+          <!-- duplicate partners four times for seamless loop on wide screens -->
           <template v-for="row in 4" :key="row">
-            <SonyLogo
-              v-for="i in 6"
-              :key="`${row}-${i}`"
+            <img
+              v-for="partner in partners"
+              :key="`${row}-${partner.id}`"
+              :src="`/storage/${partner.image_path}`"
+              :alt="partner.alt_text"
               class="h-12 w-auto inline-block"
             />
           </template>

@@ -12,11 +12,10 @@ const props = defineProps({
 const form = useForm({
     image: null,
     alt_text: props.partner.alt_text || '',
-    sort_order: props.partner.sort_order || 0,
 });
 
 function submit() {
-    form.post(`/admin/partners/${props.partner.id}`, { forceFormData: true, _method: 'put' });
+    form.put(`/admin/partners/${props.partner.id}`, { forceFormData: true });
 }
 </script>
 
@@ -36,8 +35,8 @@ function submit() {
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Current Image</label>
                         <img :src="`/storage/${props.partner.image_path}`" :alt="props.partner.alt_text" class="h-16 w-16 object-cover mb-2" />
-                        <input type="file" @change="form.image = $event.target.files[0]" class="mt-1 block w-full" />
-                        <p class="text-xs text-gray-500 mt-1">Image should be 600x600 px.</p>
+                        <input type="file" accept=".png" @change="form.image = $event.target.files[0]" class="mt-1 block w-full" />
+                        <p class="text-xs text-gray-500 mt-1">Image should be 600x600 px in PNG format.</p>
                         <span v-if="form.errors.image" class="text-red-500 text-xs">{{ form.errors.image }}</span>
                     </div>
 
@@ -45,12 +44,7 @@ function submit() {
                         <label class="block text-sm font-medium text-gray-700">Alt Text</label>
                         <input v-model="form.alt_text" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                         <span v-if="form.errors.alt_text" class="text-red-500 text-xs">{{ form.errors.alt_text }}</span>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Order</label>
-                        <input v-model="form.sort_order" type="number" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
-                        <span v-if="form.errors.sort_order" class="text-red-500 text-xs">{{ form.errors.sort_order }}</span>
+                        <p class="text-xs text-gray-500 mt-1">Use the order controls in the main table to rearrange partners.</p>
                     </div>
 
                     <div class="flex justify-end">
