@@ -5,7 +5,6 @@ import { Head, useForm } from '@inertiajs/vue3';
 const form = useForm({
     image: null,
     alt_text: '',
-    sort_order: 0,
 });
 
 function submit() {
@@ -28,8 +27,8 @@ function submit() {
                 <form @submit.prevent="submit" class="bg-white shadow sm:rounded-lg p-6 space-y-6" enctype="multipart/form-data">
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Image</label>
-                        <input type="file" @change="form.image = $event.target.files[0]" class="mt-1 block w-full" />
-                        <p class="text-xs text-gray-500 mt-1">Image should be 600x600 px.</p>
+                        <input type="file" accept=".png" @change="form.image = $event.target.files[0]" class="mt-1 block w-full" />
+                        <p class="text-xs text-gray-500 mt-1">Image should be 600x600 px in PNG format.</p>
                         <span v-if="form.errors.image" class="text-red-500 text-xs">{{ form.errors.image }}</span>
                     </div>
 
@@ -37,12 +36,7 @@ function submit() {
                         <label class="block text-sm font-medium text-gray-700">Alt Text</label>
                         <input v-model="form.alt_text" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                         <span v-if="form.errors.alt_text" class="text-red-500 text-xs">{{ form.errors.alt_text }}</span>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Order</label>
-                        <input v-model="form.sort_order" type="number" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
-                        <span v-if="form.errors.sort_order" class="text-red-500 text-xs">{{ form.errors.sort_order }}</span>
+                        <p class="text-xs text-gray-500 mt-1">New partners will be added to the bottom of the list.</p>
                     </div>
 
                     <div class="flex justify-end">

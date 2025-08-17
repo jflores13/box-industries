@@ -31,17 +31,19 @@ class PartnerController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'image' => ['required', 'image', 'mimes:jpg,jpeg,png', 'dimensions:width=600,height=600'],
+            'image' => ['required', 'image', 'mimes:png', 'dimensions:width=600,height=600'],
             'alt_text' => ['nullable', 'string', 'max:255'],
-            'sort_order' => ['nullable', 'integer'],
         ]);
 
         $path = $request->file('image')->store('partners', 'public');
 
+        // Auto-assign to bottom (highest sort_order + 1)
+        $maxSortOrder = Partner::max('sort_order') ?? 0;
+
         Partner::create([
             'image_path' => $path,
             'alt_text' => $validated['alt_text'] ?? null,
-            'sort_order' => $validated['sort_order'] ?? 0,
+            'sort_order' => $maxSortOrder + 1,
         ]);
 
         return redirect()->route('partners.index');
@@ -57,14 +59,12 @@ class PartnerController extends Controller
     public function update(Request $request, Partner $partner)
     {
         $validated = $request->validate([
-            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'dimensions:width=600,height=600'],
+            'image' => ['nullable', 'image', 'mimes:png', 'dimensions:width=600,height=600'],
             'alt_text' => ['nullable', 'string', 'max:255'],
-            'sort_order' => ['nullable', 'integer'],
         ]);
 
         $data = [
             'alt_text' => $validated['alt_text'] ?? null,
-            'sort_order' => $validated['sort_order'] ?? 0,
         ];
 
         if ($request->hasFile('image')) {
@@ -75,6 +75,8 @@ class PartnerController extends Controller
 
         return redirect()->route('partners.index');
     }
+
+
 
     public function destroy(Partner $partner)
     {
