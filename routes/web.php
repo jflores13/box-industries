@@ -31,6 +31,9 @@ Route::get('/contact', function () {
 Route::get('/environment', function () {
     return Inertia::render('Environment/Index');
 })->name('environment.index');
+Route::get('/company', function () {
+    return Inertia::render('Company/Index');
+})->name('company.index');
 Route::get('/partners', [PartnerController::class, 'publicIndex'])->name('partners.public.index');
 
 Route::get('/admin/dashboard', function () {
