@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PartnerController;
 use App\Models\Product;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -19,9 +20,10 @@ Route::get('/', function () {
     ]);
 });
 
-// Public product & service listings
+// Public product, service & partner listings
 Route::get('/products', [ProductController::class, 'publicIndex'])->name('products.public.index');
 Route::get('/services', [ServiceController::class, 'publicIndex'])->name('services.public.index');
+Route::get('/partners', [PartnerController::class, 'publicIndex'])->name('partners.public.index');
 
 Route::get('/admin/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -38,6 +40,7 @@ Route::middleware(['auth', 'verified', \App\Http\Middleware\EnsureAdmin::class])
     ->group(function () {
         Route::resource('services', ServiceController::class);
         Route::resource('products', ProductController::class);
+        Route::resource('partners', PartnerController::class);
     });
 
 require __DIR__.'/auth.php';
