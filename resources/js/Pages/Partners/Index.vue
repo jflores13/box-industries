@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 
 defineProps({
-    products: {
+    partners: {
         type: Array,
         default: () => [],
     },
@@ -11,21 +11,21 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Products" />
+    <Head title="Partners" />
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">Products</h2>
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">Partners</h2>
         </template>
 
         <div class="py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="flex justify-end mb-4">
                     <Link
-                        href="/admin/products/create"
+                        href="/admin/partners/create"
                         class="px-4 py-2 bg-blue-600 text-white rounded"
                     >
-                        New Product
+                        New Partner
                     </Link>
                 </div>
 
@@ -34,16 +34,13 @@ defineProps({
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Name
+                                    Image
                                 </th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Product ID
+                                    Alt Text
                                 </th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Category
-                                </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    On Carousel
+                                    Order
                                 </th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Actions
@@ -51,33 +48,19 @@ defineProps({
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            <tr v-if="!products || products.length === 0">
-                                <td colspan="5" class="px-6 py-4 text-center text-gray-500">
-                                    No products found. 
-                                    <Link href="/admin/products/create" class="text-blue-600 hover:text-blue-800 underline ml-1">
-                                        Create your first product
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr v-for="product in products" :key="product.id" v-else>
+                            <tr v-for="partner in partners" :key="partner.id">
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ product.name }}
+                                    <img :src="`/storage/${partner.image_path}`" :alt="partner.alt_text" class="h-16 w-16 object-cover" />
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ product.product_id || '-' }}
+                                    {{ partner.alt_text }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ product.category || '-' }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span :class="product.on_carrousel ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'" 
-                                          class="inline-flex px-2 py-1 text-xs font-semibold rounded-full">
-                                        {{ product.on_carrousel ? 'Yes' : 'No' }}
-                                    </span>
+                                    {{ partner.sort_order }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap space-x-2">
                                     <Link
-                                        :href="`/admin/products/${product.id}/edit`"
+                                        :href="`/admin/partners/${partner.id}/edit`"
                                         class="text-indigo-600 hover:text-indigo-900"
                                     >
                                         Edit

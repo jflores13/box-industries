@@ -1,7 +1,7 @@
 
 <template>
   <section class="bg-[#3a2000] text-white py-12">
-    <div class="max-w-6xl mx-auto px-4 md:hidden">
+    <div class="mx-auto px-4 md:hidden">
       <!-- Slide image -->
       <div class="w-full aspect-[3/2] overflow-hidden mb-10">
         <img

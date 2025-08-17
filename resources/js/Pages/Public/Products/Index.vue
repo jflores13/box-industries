@@ -1,44 +1,23 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, Link, usePage } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import Hero from '@/Pages/Products/Hero.vue';
+import ProductGrid from '@/Pages/Products/ProductGrid.vue';
 
-defineProps({
-    products: {
-        type: Array,
-        default: () => [],
-    },
-});
+// Optional: see if a user is logged-in to show admin links
+const page = usePage();
 
+// Tell Inertia to keep AppLayout instance alive between pages
 defineOptions({ layout: AppLayout });
 </script>
 
 <template>
-    <Head title="Products" />
-
-    <div class="min-h-screen bg-gray-100 py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <h1 class="text-2xl font-bold mb-6">Our Products</h1>
-
-            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <div
-                    v-for="product in products"
-                    :key="product.id"
-                    class="bg-white overflow-hidden shadow-sm rounded-lg p-6"
-                >
-                    <h2 class="text-xl font-semibold mb-2">{{ product.name }}</h2>
-                    <p class="text-gray-700 mb-4">
-                        {{ product.short_description || 'No description provided.' }}
-                    </p>
-                    <a
-                        v-if="product.button_link"
-                        :href="product.button_link"
-                        target="_blank"
-                        class="text-blue-600 hover:underline"
-                    >
-                        {{ product.button_text || 'Learn more' }}
-                    </a>
-                </div>
-            </div>
-        </div>
+  <Head title="Products" />
+  <Hero />
+  <div class="bg-gray-100 py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-4xl font-bold mb-4">Our Products</h2>
     </div>
+  </div>
+  <ProductGrid :products="page.props.products" />
 </template>
