@@ -4,7 +4,7 @@ import SonyLogo from '@/Components/Images/SonyLogo.vue';
 
 <template>
   <section class="bg-gray-100 py-4">
-    <div class="px-4 max-w-6xl mx-auto">
+    <div class="px-4 mx-auto">
       <h4>Trust in Us</h4>
 
       <div class="overflow-hidden py-4 w-full">
