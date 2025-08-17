@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PartnerController;
-use App\Models\Product;
 use App\Models\Partner;
+use App\Models\Product;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,6 +28,9 @@ Route::get('/services', [ServiceController::class, 'publicIndex'])->name('servic
 Route::get('/contact', function () {
     return Inertia::render('Contact/Index');
 })->name('contact.index');
+Route::get('/environment', function () {
+    return Inertia::render('Environment/Index');
+})->name('environment.index');
 Route::get('/partners', [PartnerController::class, 'publicIndex'])->name('partners.public.index');
 
 Route::get('/admin/dashboard', function () {
@@ -45,7 +48,7 @@ Route::middleware(['auth', 'verified', \App\Http\Middleware\EnsureAdmin::class])
     ->group(function () {
         Route::resource('services', ServiceController::class);
         Route::resource('products', ProductController::class);
-        
+
         // Custom partner routes BEFORE resource routes to avoid conflicts
         Route::patch('partners/order', [\App\Http\Controllers\PartnerOrderController::class, 'update'])->name('partners.order');
         Route::resource('partners', PartnerController::class);
