@@ -15,7 +15,7 @@ const form = useForm({
 });
 
 function submit() {
-    form.put(`/admin/partners/${props.partner.id}`, { forceFormData: true });
+    form.put(`/admin/partners/${props.partner.id}`);
 }
 </script>
 
