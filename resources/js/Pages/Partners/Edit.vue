@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, useForm } from '@inertiajs/vue3';
+import { Link, Head, useForm, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
 
 const props = defineProps({
     partner: {
@@ -9,13 +10,23 @@ const props = defineProps({
     },
 });
 
+const page = usePage();
+const isSuperAdmin = computed(() => page.props.auth.user?.role === 'super_admin');
+
 const form = useForm({
     image: null,
     alt_text: props.partner.alt_text || '',
+    _method: 'PUT',
 });
 
 function submit() {
-    form.put(`/admin/partners/${props.partner.id}`);
+    form.post(`/admin/partners/${props.partner.id}`);
+}
+
+function destroy() {
+    if (confirm('Are you sure you want to delete this partner?')) {
+        form.delete(`/admin/partners/${props.partner.id}`);
+    }
 }
 </script>
 
@@ -47,10 +58,19 @@ function submit() {
                         <p class="text-xs text-gray-500 mt-1">Use the order controls in the main table to rearrange partners.</p>
                     </div>
 
-                    <div class="flex justify-end">
+                    <div class="flex justify-end space-x-2">
                         <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">
                             Update
                         </button>
+                        <button
+                            v-if="isSuperAdmin"
+                            @click.prevent="destroy"
+                            type="button"
+                            class="px-4 py-2 bg-red-600 text-white rounded"
+                        >
+                            Delete
+                        </button>
+                        <Link :href="'/admin/partners'" class="px-4 py-2 bg-gray-300 rounded">Cancel</Link>
                     </div>
                 </form>
             </div>
