@@ -18,7 +18,7 @@ function toggle() {
   <div class="relative min-h-screen bg-transparent">
     <!-- Navigation -->
     <nav
-      class="absolute inset-x-0 top-0 z-30 w-full flex items-center justify-between max-w-7xl mx-auto px-6 py-6 bg-transparent"
+      class="absolute inset-x-0 top-0 z-30 w-full flex items-center justify-between mx-auto px-6 py-6 bg-transparent"
     >
       <!-- Logo -->
       <transition name="fade">
