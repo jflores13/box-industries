@@ -1,8 +1,6 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
 import TheFooter from '@/Components/TheFooter.vue';
 
 defineOptions({ layout: AppLayout });
@@ -45,39 +43,72 @@ defineOptions({ layout: AppLayout });
 
   <!-- Contact form -->
   <section class="bg-box-brown text-white">
-    <div class="max-w-7xl mx-auto px-6 py-24">
-      <h2 class="text-4xl font-bold mb-10">Send us a message</h2>
-      <form class="grid gap-6 md:grid-cols-2">
-        <div>
-          <InputLabel for="first_name" value="First Name" class="mb-1" />
-          <TextInput id="first_name" type="text" class="w-full" />
+    <div class="max-w-4xl mx-auto px-6 py-24">
+      <h2 class="text-5xl md:text-6xl font-bold mb-16 text-box-yellow-light leading-tight">Send us<br>a message</h2>
+      <form class="space-y-12">
+        <!-- First row: First Name and Last Name -->
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="space-y-3">
+            <label for="first_name" class="block text-box-yellow-light text-sm font-medium">First Name*</label>
+            <input 
+              id="first_name" 
+              type="text" 
+              placeholder="Your first name"
+              class="w-full bg-transparent border-0 border-b border-box-yellow-light text-box-yellow-light placeholder-box-yellow-light/70 focus:border-box-yellow-light focus:ring-0 pb-2 text-lg"
+            />
+          </div>
+          <div class="space-y-3">
+            <label for="last_name" class="block text-box-yellow-light text-sm font-medium">Last Name*</label>
+            <input 
+              id="last_name" 
+              type="text" 
+              placeholder="Your last name"
+              class="w-full bg-transparent border-0 border-b border-box-yellow-light text-box-yellow-light placeholder-box-yellow-light/70 focus:border-box-yellow-light focus:ring-0 pb-2 text-lg"
+            />
+          </div>
         </div>
-        <div>
-          <InputLabel for="last_name" value="Last Name" class="mb-1" />
-          <TextInput id="last_name" type="text" class="w-full" />
+        
+        <!-- Second row: Email and Company Name -->
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="space-y-3">
+            <label for="email" class="block text-box-yellow-light text-sm font-medium">Email*</label>
+            <input 
+              id="email" 
+              type="email" 
+              placeholder="Your email"
+              class="w-full bg-transparent border-0 border-b border-box-yellow-light text-box-yellow-light placeholder-box-yellow-light/70 focus:border-box-yellow-light focus:ring-0 pb-2 text-lg"
+            />
+          </div>
+          <div class="space-y-3">
+            <label for="company" class="block text-box-yellow-light text-sm font-medium">Company Name*</label>
+            <input 
+              id="company" 
+              type="text" 
+              placeholder="Your company name"
+              class="w-full bg-transparent border-0 border-b border-box-yellow-light text-box-yellow-light placeholder-box-yellow-light/70 focus:border-box-yellow-light focus:ring-0 pb-2 text-lg"
+            />
+          </div>
         </div>
-        <div>
-          <InputLabel for="email" value="Email" class="mb-1" />
-          <TextInput id="email" type="email" class="w-full" />
+        
+        <!-- Message field -->
+        <div class="space-y-3">
+          <label for="message" class="block text-box-yellow-light text-sm font-medium">Message*</label>
+          <textarea 
+            id="message" 
+            rows="6" 
+            placeholder="Send us your message"
+            class="w-full bg-transparent border-0 border-b border-box-yellow-light text-box-yellow-light placeholder-box-yellow-light/70 focus:border-box-yellow-light focus:ring-0 pb-2 text-lg resize-none"
+          ></textarea>
         </div>
-        <div>
-          <InputLabel for="phone" value="Phone" class="mb-1" />
-          <TextInput id="phone" type="text" class="w-full" />
-        </div>
-        <div>
-          <InputLabel for="company" value="Your company name" class="mb-1" />
-          <TextInput id="company" type="text" class="w-full" />
-        </div>
-        <div>
-          <InputLabel for="subject" value="Subject" class="mb-1" />
-          <TextInput id="subject" type="text" class="w-full" />
-        </div>
-        <div class="md:col-span-2">
-          <InputLabel for="message" value="Send us your message" class="mb-1" />
-          <textarea id="message" rows="5" class="w-full rounded-md border-gray-300 text-box-brown"></textarea>
-        </div>
-        <div class="md:col-span-2">
-          <button type="submit" class="mt-4 bg-box-yellow-light text-box-brown px-6 py-3 hover:bg-box-yellow/90">Submit</button>
+        
+        <!-- Submit button -->
+        <div class="pt-8">
+          <button 
+            type="submit" 
+            class="bg-box-yellow-light text-box-brown px-8 py-4 text-lg font-semibold hover:bg-box-yellow-light/90 transition-colors duration-200"
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>
