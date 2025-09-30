@@ -10,7 +10,7 @@
       <!-- Call-to-action button -->
       <button
         type="button"
-        class="bg-box-brown text-box-yellow-light px-6 py-3 rounded-md shadow hover:bg-box-brown/90 transition-colors"
+        class="bg-box-brown text-box-yellow-light px-6 py-3 shadow hover:bg-box-brown/90 transition-colors"
       >
         Learn More
       </button>
@@ -26,11 +26,3 @@
     </div>
   </section>
 </template>
-
-<script setup>
-// No additional logic needed for this static section.
-</script>
-
-<style scoped>
-/* No extra scoped styles – Tailwind handles everything. */
-</style>

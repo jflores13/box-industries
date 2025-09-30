@@ -15,7 +15,7 @@
               Get in touch with us.
             </h3>
             <Link href="/contact" 
-              class="w-full md:w-fit mt-6 md:mt-20 mb-6 md:mb-28 bg-box-yellow-light text-box-brown px-6 py-3 hover:bg-box-yellow-light/90 hover:font-bold transition-colors"
+              class="w-fit mt-6 md:mt-20 mb-6 md:mb-28 bg-box-yellow-light text-box-brown px-6 py-3 hover:bg-box-yellow-light/90 hover:font-bold transition-colors"
               type="button"
             >
               Contact Us
