@@ -1,6 +1,9 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import Hero from '@/Pages/Public/Services/Hero.vue';
+import ServicesList from '@/Pages/Public/Services/ServicesList.vue';
+import TheFooter from '@/Components/TheFooter.vue';
 
 defineProps({
     services: {
@@ -10,27 +13,17 @@ defineProps({
 });
 
 defineOptions({ layout: AppLayout });
+
 </script>
 
 <template>
     <Head title="Services" />
-
-    <div class="min-h-screen bg-gray-100 py-12">
+    <Hero />
+    <section class="min-h-screen bg-gray-100 py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <h1 class="text-2xl font-bold mb-6">Our Services</h1>
-
-            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <div
-                    v-for="service in services"
-                    :key="service.id"
-                    class="bg-white overflow-hidden shadow-sm rounded-lg p-6"
-                >
-                    <h2 class="text-xl font-semibold mb-2">{{ service.name }}</h2>
-                    <p class="text-gray-700">
-                        {{ service.short_description || 'No description provided.' }}
-                    </p>
-                </div>
-            </div>
+            <h1 class="text-2xl font-bold mb-6 text-box-yellow text-3xl">Development</h1>
         </div>
-    </div>
+        <ServicesList :services="services" />
+    </section>
+    <TheFooter mode="light" />
 </template>

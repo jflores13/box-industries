@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-gray-100 py-2">
+    <section class="bg-gray-100 py-20">
         <div class="max-w-6xl mx-auto px-4">
             <!-- Each product row -->
             <div
@@ -32,9 +32,10 @@
                         v-if="product.button_link"
                         :href="product.button_link"
                         target="_blank"
-                        class="text-blue-600 hover:underline"
+                        class="bg-box-brown text-box-yellow-light px-4 py-2 hover:bg-box-brown/80 w-fit"
+                        type="button"
                     >
-                        {{ product.button_text || "Learn more" }}
+                        {{ product.button_text || "Get a custom quote" }}
                     </a>
                 </div>
             </div>

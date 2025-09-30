@@ -14,9 +14,12 @@
               Ready to explore new opportunities together?<br>
               Get in touch with us.
             </h3>
-            <button class="w-full md:max-w-40 mt-6 md:mt-20 mb-6 md:mb-28 bg-box-yellow-light text-box-brown px-6 py-3 hover:bg-box-yellow-light/90 hover:font-bold transition-colors">
+            <Link href="/contact" 
+              class="w-full md:w-fit mt-6 md:mt-20 mb-6 md:mb-28 bg-box-yellow-light text-box-brown px-6 py-3 hover:bg-box-yellow-light/90 hover:font-bold transition-colors"
+              type="button"
+            >
               Contact Us
-            </button>
+            </Link>
             <p class="text-xs">Box Industries © 2025. Todos Los Derechos Reservados.
               Carretera Loma Alta 1218-A Col. Rural CP 25350 Arteaga, Coahuila.</p>
           </div>
@@ -55,6 +58,12 @@ import Facebook from './Images/Logos.vue/Facebook.vue';
 import Instagram from './Images/Logos.vue/Instagram.vue';
 import LinkedIn from './Images/Logos.vue/LinkedIn.vue';
 import { Link } from '@inertiajs/vue3';
-import { ref } from 'vue';
-const mode = ref('dark');
+
+defineProps({
+  mode: {
+    type: String,
+    default: 'dark',
+  },
+});
+
 </script>
