@@ -2,13 +2,18 @@
 <template>
   <section class="bg-box-brown text-white py-12">
     <div class="max-w-6xl mx-auto px-4">
-      <h4 class="text-box-yellow-light text-5xl tracking-widest">
+      <h4 class="text-box-yellow-light text-5xl mb-8">
         Ready for the new generation
       </h4>
     </div>
     <div class="flex flex-col max-w-6xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div v-for="(slide, index) in slides" :key="slide.title" class="font-medium ">
+        <div 
+          v-for="(slide, index) in slides" 
+          :key="slide.title" 
+          class="font-medium"
+          :class="{ 'hidden md:block': index !== currentIndex, 'block': index === currentIndex }"
+        >
           <div class="space-y-4 col-span-1">
             <div class="w-full aspect-square overflow-hidden mb-4">
               <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover" />

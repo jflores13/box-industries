@@ -3,7 +3,7 @@
   <section class="bg-white py-12">
     <div class="max-w-6xl mx-auto px-4">
       <!-- Intro text -->
-      <p class="text-2xl md:text-3xl leading-relaxed font-medium mb-8">
+      <p class="text-2xl md:text-3xl leading-tight font-medium mb-8">
         Box Industries offers its clients end-to-end expertise — from design and material sourcing to project management and scalable production. Discover more about our process here.
       </p>
 
