@@ -15,7 +15,9 @@ defineOptions({ layout: AppLayout });
   <!-- Contact form -->
   <section class="bg-box-brown text-white">
     <div class="max-w-7xl mx-auto px-6 py-24">
-      <h2 class="text-5xl md:text-6xl font-bold mb-16 text-box-yellow-light leading-tight">Send us<br>a message</h2>
+      <h2 class="text-5xl md:text-6xl font-bold mb-16 text-box-yellow-light leading-tight">
+        Send us<br>a message
+      </h2>
       <form class="space-y-12">
         <!-- First row: First Name and Last Name -->
         <div class="grid md:grid-cols-2 gap-12">
