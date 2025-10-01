@@ -1,7 +1,6 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
-import TheFooter from '@/Components/TheFooter.vue';
 
 defineOptions({ layout: AppLayout });
 </script>
@@ -113,7 +112,4 @@ defineOptions({ layout: AppLayout });
       </form>
     </div>
   </section>
-
-  <TheFooter mode="dark" />
 </template>
-

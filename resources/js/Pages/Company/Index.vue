@@ -1,6 +1,5 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import TheFooter from '@/Components/TheFooter.vue';
 import Hero from '@/Pages/Company/Hero_Figma.vue';
 import InNumbers from '@/Pages/Company/InNumbers.vue';
 import WhatWeStandFor from '@/Pages/Company/WhatWeStandFor.vue';
@@ -35,6 +34,4 @@ defineOptions({ layout: AppLayout });
       </div>
       <Partners class="w-full max-w-7xl mx-auto" />
     </section>
-
-    <TheFooter />
 </template>

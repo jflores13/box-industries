@@ -24,15 +24,11 @@ Route::get('/', function () {
     ]);
 });
 
-// Public product, service & partner listings
+// Subpages in menu order
 Route::get('/products', [ProductController::class, 'publicIndex'])->name('products.public.index');
+
 Route::get('/services', [ServiceController::class, 'publicIndex'])->name('services.public.index');
-Route::get('/contact', function () {
-    return Inertia::render('Contact/Index');
-})->name('contact.index');
-Route::get('/environment', function () {
-    return Inertia::render('Environment/Index');
-})->name('environment.index');
+
 Route::get('/company', function () {
     return Inertia::render('Company/Index', [
         'menu_style' => 'black',
@@ -40,7 +36,23 @@ Route::get('/company', function () {
         'partners' => Partner::orderBy('sort_order')->get(),
     ]);
 })->name('company.index');
-Route::get('/partners', [PartnerController::class, 'publicIndex'])->name('partners.public.index');
+
+Route::get('/environment', function () {
+    return Inertia::render('Environment/Index', [
+        'menu_style' => 'black',
+        'footer_style' => 'dark',
+    ]);
+})->name('environment.index');
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact/Index');
+})->name('contact.index');
+
+
+
+Route::get(
+        '/partners', [PartnerController::class, 'publicIndex']
+    )->name('partners.public.index');
 
 Route::get('/admin/dashboard', function () {
     return Inertia::render('Dashboard');

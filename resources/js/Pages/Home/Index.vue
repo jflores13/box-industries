@@ -6,7 +6,6 @@ import PartnersAndCompany from '@/Pages/Home/PartnersAndCompany.vue';
 import ProductsCarousel from '@/Pages/Home/ProductsCarousel.vue';
 import NewGeneration from '@/Pages/Home/NewGeneration.vue';
 import LearnMore from '@/Pages/Home/LearnMore.vue';
-import TheFooter from '@/Components/TheFooter.vue';
 
 // Props from backend
 const props = defineProps({
@@ -40,5 +39,4 @@ defineOptions({ layout: AppLayout });
   <ProductsCarousel :products="carouselProducts" />
   <NewGeneration />
   <LearnMore />
-  <TheFooter mode="dark" />
 </template>

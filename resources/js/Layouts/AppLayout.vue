@@ -4,6 +4,7 @@ import { ref, computed } from 'vue';
 import WoodLogo from '@/Components/Images/WoodLogo.vue';
 import WhiteLogo from '@/Components/Images/WhiteLogo.vue';
 import BlackLogo from '@/Components/Images/BlackLogo.vue';
+import TheFooter from '@/Components/TheFooter.vue';
 
 const isOpen = ref(false);
 
@@ -89,6 +90,7 @@ function toggle() {
     <main>
       <slot />
     </main>
+    <TheFooter />
   </div>
 </template>
 

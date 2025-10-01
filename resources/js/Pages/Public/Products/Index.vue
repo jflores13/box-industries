@@ -3,7 +3,6 @@ import { Head, Link, usePage } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Hero from '@/Pages/Products/Hero.vue';
 import ProductGrid from '@/Pages/Products/ProductGrid.vue';
-import TheFooter from '@/Components/TheFooter.vue';
 
 // Optional: see if a user is logged-in to show admin links
 const page = usePage();
@@ -24,5 +23,4 @@ defineOptions({ layout: AppLayout });
   <ProductGrid 
     :products="page.props.products" 
   />
-  <TheFooter mode="dark" />
 </template>

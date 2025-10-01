@@ -3,7 +3,6 @@ import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Hero from '@/Pages/Public/Services/Hero_Figma.vue';
 import ServicesList from '@/Pages/Public/Services/ServicesList.vue';
-import TheFooter from '@/Components/TheFooter.vue';
 import { Services } from '@/data';
 
 defineOptions({ layout: AppLayout });
@@ -19,5 +18,4 @@ defineOptions({ layout: AppLayout });
         </div>
         <ServicesList :services="Services" />
     </section>
-    <TheFooter />
 </template>
