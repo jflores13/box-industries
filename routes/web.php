@@ -13,6 +13,7 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Home/Index', [
         'menu_style' => 'wood',
+        'footer_style' => 'dark',
         'canLogin' => Route::has('login'),
         'carouselProducts' => Product::where('on_carrousel', true)->get(),
         'products' => Product::all(),
