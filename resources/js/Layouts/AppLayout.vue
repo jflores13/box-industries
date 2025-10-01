@@ -3,6 +3,7 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
 import WoodLogo from '@/Components/Images/WoodLogo.vue';
 import WhiteLogo from '@/Components/Images/WhiteLogo.vue';
+import BlackLogo from '@/Components/Images/BlackLogo.vue';
 
 const isOpen = ref(false);
 
@@ -21,14 +22,21 @@ function toggle() {
       class="absolute inset-x-0 top-0 z-30 w-full flex items-center justify-between mx-auto px-6 py-6 bg-transparent max-w-7xl"
     >
       <!-- Logo -->
-      <transition name="fade">
+      <transition-group name="fade">
         <WoodLogo 
-          v-if="currentUrl === '/'" 
-          class="w-36 h-auto z-50"
+          v-if="page.props.logo_style === 'wood'" 
+          class="w-36 h-auto z-50 cursor-pointer"
           @click="toggle"
         />
-        <WhiteLogo v-else class="w-36 h-auto" />
-      </transition>
+        <WhiteLogo v-if="page.props.logo_style === 'white'" 
+          class="w-36 h-auto z-50 cursor-pointer" 
+          @click="toggle" 
+        />
+        <BlackLogo v-if="page.props.logo_style === 'black'" 
+          class="w-36 h-auto z-50 cursor-pointer" 
+          @click="toggle" 
+        />
+      </transition-group>
 
       <!-- Desktop menu -->
       <div class="hidden md:flex items-center gap-4">

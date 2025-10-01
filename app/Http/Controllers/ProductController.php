@@ -24,6 +24,7 @@ class ProductController extends Controller
     {
         return Inertia::render('Public/Products/Index', [
             'products' => Product::all(),
+            'logo_style' => 'white',
         ]);
     }
 
