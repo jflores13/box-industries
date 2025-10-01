@@ -17,8 +17,13 @@
               Ready to explore new opportunities together?<br>
               Get in touch with us.
             </h3>
-            <Link href="/contact" 
-              class="w-fit mt-6 md:mt-20 mb-6 md:mb-28 bg-box-yellow-light text-box-brown px-6 py-3 hover:bg-box-yellow-light/90 hover:font-bold transition-colors"
+            <Link 
+              href="/contact" 
+              class="w-fit mt-6 md:mt-20 mb-6 md:mb-28  px-6 py-3  hover:font-bold transition-colors"
+              :class="{
+                'bg-box-yellow-light hover:bg-box-yellow-light/90 text-box-brown': page.props.footer_style === 'dark',
+                'bg-box-brown hover:bg-box-brown/90 text-white': page.props.footer_style === 'light',
+              }"
               type="button"
             >
               Contact Us
@@ -34,13 +39,13 @@
             </div>
             <div class="flex items-center justify-center gap-2">
               <Link href="https://google.com" as="button">
-                <Facebook :mode="mode" class="w-6 h-6 cursor-pointer" />
+                <Facebook :mode="page.props.footer_style === 'light' ? 'light' : 'dark'" class="w-6 h-6 cursor-pointer" />
               </Link>
               <Link href="https://google.com" as="button">
-                <Instagram :mode="mode" class="w-6 h-6 cursor-pointer" />
+                <Instagram :mode="page.props.footer_style === 'light' ? 'light' : 'dark'" class="w-6 h-6 cursor-pointer" />
               </Link>
               <Link href="https://google.com" as="button">
-                <LinkedIn :mode="mode" class="w-6 h-6 cursor-pointer" />
+                <LinkedIn :mode="page.props.footer_style === 'light' ? 'light' : 'dark'" class="w-6 h-6 cursor-pointer" />
               </Link>
             </div>
           </div>
