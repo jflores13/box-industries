@@ -18,7 +18,7 @@ defineOptions({ layout: AppLayout });
   <Hero />
   <div class="bg-gray-100 py-10">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-bold">Our product portfolio</h2>
+      <h2 class="text-4xl font-bold text-black">Our product portfolio</h2>
     </div>
   </div>
   <ProductGrid 

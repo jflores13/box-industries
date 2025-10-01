@@ -22,10 +22,10 @@
                     :class="index % 2 === 0 ? 'order-2' : 'order-2 md:order-1'" 
                     class="flex flex-col justify-center p-6"
                 >
-                    <h2 class="text-2xl font-semibold mb-4">
+                    <h2 class="text-3xl font-semibold mb-6 text-black">
                         {{ product.name }}® - {{  product.short_description }}
                     </h2>
-                    <p class="text-gray-700 mb-4">
+                    <p class="text-gray-700 mb-6">
                         {{
                             product.long_description ||
                             "No description provided."
