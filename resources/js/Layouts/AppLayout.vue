@@ -16,7 +16,9 @@ function toggle() {
 </script>
 
 <template>
-  <div class="relative min-h-screen bg-transparent">
+  <div class="relative min-h-screen bg-transparent"
+    :class="page.props.menu_style === 'black' ? 'text-black' : 'text-white'"
+  >
     <!-- Navigation -->
     <nav
       class="absolute inset-x-0 top-0 z-30 w-full flex items-center justify-between mx-auto px-6 py-6 bg-transparent max-w-7xl"
@@ -24,24 +26,26 @@ function toggle() {
       <!-- Logo -->
       <transition-group name="fade">
         <WoodLogo 
-          v-if="page.props.logo_style === 'wood'" 
+          v-if="page.props.menu_style === 'wood'" 
           class="w-36 h-auto z-50 cursor-pointer"
           @click="toggle"
         />
-        <WhiteLogo v-if="page.props.logo_style === 'white'" 
+        <WhiteLogo v-if="page.props.menu_style === 'white'" 
           class="w-36 h-auto z-50 cursor-pointer" 
           @click="toggle" 
         />
-        <BlackLogo v-if="page.props.logo_style === 'black'" 
+        <BlackLogo v-if="page.props.menu_style === 'black'" 
           class="w-36 h-auto z-50 cursor-pointer" 
           @click="toggle" 
         />
       </transition-group>
 
       <!-- Desktop menu -->
-      <div class="hidden md:flex items-center gap-4">
+      <div 
+        class="hidden md:flex items-center gap-4"
+      >
         <div
-          class="flex items-center text-white text-sm bg-white/10 lg:text-base backdrop-blur font-medium"
+          class="flex items-center text-sm bg-white/10 lg:text-base backdrop-blur font-medium"
         >
           <Link href="/products" class="hover:text-yellow-400 p-3">Products</Link>
           <Link href="/services" class="hover:text-yellow-400 p-3">Expertise</Link>
@@ -50,7 +54,7 @@ function toggle() {
           <Link href="/contact" class="hover:text-yellow-400 p-3">Contact</Link>
         </div>
 
-        <div class="flex items-center text-white text-sm bg-white/10 lg:text-base backdrop-blur font-medium">
+        <div class="flex items-center text-sm bg-white/10 lg:text-base backdrop-blur font-medium">
           <Link href="#" class="hover:text-yellow-400 p-3">Eng</Link>
           <Link href="#" class="hover:text-yellow-400 p-3">Spa</Link>
         </div>
@@ -58,7 +62,7 @@ function toggle() {
 
       <!-- Burger menu -->
       <div v-if="!isOpen" class="md:hidden">
-        <button @click="toggle" class="text-white focus:outline-none">
+        <button @click="toggle" class="focus:outline-none">
           <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -69,7 +73,7 @@ function toggle() {
       <transition name="slide-fade">
         <div
           v-if="isOpen"
-          class="md:hidden absolute inset-x-0 top-0 backdrop-blur text-white py-8 px-10 flex flex-col items-end space-y-6 z-40"
+          class="md:hidden absolute inset-x-0 top-0 backdrop-blur py-8 px-10 flex flex-col items-end space-y-6 z-40"
         >
           <Link href="/products" class="text-lg hover:text-yellow-400" @click="toggle">Products</Link>
           <Link href="/services" class="text-lg hover:text-yellow-400" @click="toggle">Expertise</Link>

@@ -1,5 +1,8 @@
 <template>
-  <footer class="bg-box-brown text-white py-12">
+  <footer 
+    class="py-12"
+    :class="page.props.footer_style === 'light' ? 'bg-box-light-gray text-black' : 'bg-box-brown text-white'"
+  >
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div class="col-span-1 flex flex-col justify-start md:justify-end items-start">
@@ -58,6 +61,7 @@ import Facebook from './Images/Logos.vue/Facebook.vue';
 import Instagram from './Images/Logos.vue/Instagram.vue';
 import LinkedIn from './Images/Logos.vue/LinkedIn.vue';
 import { Link } from '@inertiajs/vue3';
+import { usePage } from '@inertiajs/vue3';
 
 defineProps({
   mode: {
@@ -65,5 +69,7 @@ defineProps({
     default: 'dark',
   },
 });
+
+const page = usePage();
 
 </script>

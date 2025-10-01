@@ -23,7 +23,8 @@ class ServiceController extends Controller
     public function publicIndex(): Response
     {
         return Inertia::render('Public/Services/Index', [
-            'services' => Service::all(),
+            'menu_style' => 'black',
+            'footer_style' => 'light',
         ]);
     }
 
