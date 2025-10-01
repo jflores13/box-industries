@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.contact-form-label {
+  @apply block text-white text-sm font-medium;
+}
+
+.contact-form-input {
+  @apply w-full bg-transparent border-0 border-b border-box-yellow-light text-box-yellow-light placeholder-box-yellow-light/70 focus:border-box-yellow-light focus:ring-0 pb-2 text-lg;
+}

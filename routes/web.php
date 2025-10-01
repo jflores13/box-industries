@@ -45,7 +45,10 @@ Route::get('/environment', function () {
 })->name('environment.index');
 
 Route::get('/contact', function () {
-    return Inertia::render('Contact/Index');
+    return Inertia::render('Contact/Index', [
+        'menu_style' => 'black',
+        'footer_style' => 'light',
+    ]);
 })->name('contact.index');
 
 
