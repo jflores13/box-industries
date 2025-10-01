@@ -1,30 +1,33 @@
 <template>
-    <section class="bg-gray-100 py-20">
-        <div class="max-w-6xl mx-auto px-4">
+    <section class="bg-gray-100">
+        <div class="w-full mx-auto">
             <!-- Each product row -->
             <div
                 v-for="(product, index) in products"
                 :key="product.id || index"
                 class="grid grid-cols-1 md:grid-cols-2 items-center"
             >
-                <!-- Image column → odd products (index 0,2,4,...) show image first -->
-                <div :class="index % 2 === 0 ? 'order-1' : 'order-2'">
+                <div 
+                    :class="index % 2 === 0 ? 'order-1' : 'order-1 md:order-2'"
+                    class="flex justify-center"
+                >
                     <img
-                        :src="product.img || placeholderSrc"
+                        :src="product.image_src || placeholderSrc"
                         :alt="product.name || 'Product image'"
                         @error="onImgError"
-                        class="w-full h-64 object-cover bg-gray-200"
+                        class="w-full h-full object-cover bg-gray-200"
                     />
                 </div>
-
-                <!-- Description column → order flips on even products -->
-                <div :class="index % 2 === 0 ? 'order-2' : 'order-1'" class="flex flex-col justify-center p-6">
+                <div 
+                    :class="index % 2 === 0 ? 'order-2' : 'order-2 md:order-1'" 
+                    class="flex flex-col justify-center p-6"
+                >
                     <h2 class="text-2xl font-semibold mb-4">
-                        {{ product.name }}®
+                        {{ product.name }}® - {{  product.short_description }}
                     </h2>
-                    <p class="text-gray-700 mb-4 min-h-[4rem]">
+                    <p class="text-gray-700 mb-4">
                         {{
-                            product.short_description ||
+                            product.long_description ||
                             "No description provided."
                         }}
                     </p>

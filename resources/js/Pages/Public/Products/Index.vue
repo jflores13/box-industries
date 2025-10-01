@@ -16,11 +16,13 @@ defineOptions({ layout: AppLayout });
 <template>
   <Head title="Products" />
   <Hero />
-  <div class="bg-gray-100 py-8">
-    <div class="max-w-6xl mx-auto px-4">
+  <div class="bg-gray-100 py-10">
+    <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-4xl font-bold">Our product portfolio</h2>
     </div>
   </div>
-  <ProductGrid :products="page.props.products" />
+  <ProductGrid 
+    :products="page.props.products" 
+  />
   <TheFooter mode="dark" />
 </template>
