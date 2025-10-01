@@ -30,12 +30,13 @@ const user = page.props.auth?.user;
 
 // Tell Inertia to keep AppLayout instance alive between pages
 defineOptions({ layout: AppLayout });
+
 </script>
 
 <template>
   <Head title="Home" />
   <Hero />
-  <PartnersAndCompany :partners="partners" />
+  <PartnersAndCompany />
   <ProductsCarousel :products="carouselProducts" />
   <NewGeneration />
   <LearnMore />

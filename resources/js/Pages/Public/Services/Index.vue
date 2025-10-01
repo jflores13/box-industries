@@ -19,5 +19,5 @@ defineOptions({ layout: AppLayout });
         </div>
         <ServicesList :services="Services" />
     </section>
-    <TheFooter mode="light" />
+    <TheFooter />
 </template>

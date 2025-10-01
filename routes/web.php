@@ -34,7 +34,11 @@ Route::get('/environment', function () {
     return Inertia::render('Environment/Index');
 })->name('environment.index');
 Route::get('/company', function () {
-    return Inertia::render('Company/Index');
+    return Inertia::render('Company/Index', [
+        'menu_style' => 'black',
+        'footer_style' => 'dark',
+        'partners' => Partner::orderBy('sort_order')->get(),
+    ]);
 })->name('company.index');
 Route::get('/partners', [PartnerController::class, 'publicIndex'])->name('partners.public.index');
 
