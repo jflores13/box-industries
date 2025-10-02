@@ -13,10 +13,6 @@ const props = defineProps({
         type: Array,
         default: () => [],
     },
-    carouselProducts: {
-        type: Array,
-        default: () => [],
-    },
     partners: {
         type: Array,
         default: () => [],
@@ -36,7 +32,7 @@ defineOptions({ layout: AppLayout });
   <Head title="Home" />
   <Hero />
   <PartnersAndCompany />
-  <ProductsCarousel :products="carouselProducts" />
+  <ProductsCarousel />
   <NewGeneration />
   <LearnMore />
 </template>

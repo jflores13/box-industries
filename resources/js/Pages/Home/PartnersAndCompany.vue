@@ -4,7 +4,7 @@ import Partners from '@/Components/Containers/Partners.vue';
 </script>
 
 <template>
-  <section class="bg-gray-100 py-4">
+  <section class="bg-gray-100 py-4 text-black">
     <div class="px-4 mx-auto max-w-7xl">
       <h4>Trust in Us</h4>
 

@@ -7,7 +7,7 @@
       </h4>
     </div>
     <div class="flex flex-col max-w-6xl mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div 
           v-for="(slide, index) in slides" 
           :key="slide.title" 
@@ -27,7 +27,7 @@
         </div>
       </div>
       <SlideChanger 
-        class="text-box-yellow"
+        class="text-box-yellow block md:hidden"
         @next="next"
         @previous="previous"
       />
