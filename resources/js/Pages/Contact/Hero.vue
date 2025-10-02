@@ -11,7 +11,7 @@
       </h1>
       <div class="w-full h-auto">
         <img
-          src="/img/BXIN-Forklift.jpg"
+          src="/img/Contact.jpg"
           alt="Contact and Location Hero"
           class="w-full h-full object-cover"
         />
