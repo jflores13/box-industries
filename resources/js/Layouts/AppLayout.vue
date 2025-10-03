@@ -1,6 +1,6 @@
 <script setup>
-import { Link, usePage } from '@inertiajs/vue3';
-import { ref, computed } from 'vue';
+import { Link, usePage, router } from '@inertiajs/vue3';
+import { ref } from 'vue';
 import WoodLogo from '@/Components/Images/WoodLogo.vue';
 import WhiteLogo from '@/Components/Images/WhiteLogo.vue';
 import BlackLogo from '@/Components/Images/BlackLogo.vue';
@@ -9,11 +9,15 @@ import TheFooter from '@/Components/TheFooter.vue';
 const isOpen = ref(false);
 
 const page = usePage();
-const currentUrl = computed(() => page.url);
 
-function toggle() {
-  isOpen.value = !isOpen.value;
+function logoClick() {
+  if (!isOpen.value) {
+    router.visit('/')
+  } else {
+    isOpen.value = !isOpen.value;
+  }
 }
+
 </script>
 
 <template>
@@ -29,15 +33,15 @@ function toggle() {
         <WoodLogo 
           v-if="page.props.menu_style === 'wood'" 
           class="w-36 h-auto z-50 cursor-pointer"
-          @click="toggle"
+          @click="logoClick"
         />
         <WhiteLogo v-if="page.props.menu_style === 'white'" 
           class="w-36 h-auto z-50 cursor-pointer" 
-          @click="toggle" 
+          @click="logoClick" 
         />
         <BlackLogo v-if="page.props.menu_style === 'black'" 
           class="w-36 h-auto z-50 cursor-pointer" 
-          @click="toggle" 
+          @click="logoClick" 
         />
       </transition-group>
 
@@ -48,22 +52,26 @@ function toggle() {
         <div
           class="flex items-center text-sm bg-white/10 lg:text-base backdrop-blur font-medium"
         >
-          <Link href="/products" class="hover:text-yellow-400 p-3">Products</Link>
-          <Link href="/services" class="hover:text-yellow-400 p-3">Expertise</Link>
-          <Link href="/company" class="hover:text-yellow-400 p-3">Company</Link>
-          <Link href="/environment" class="hover:text-yellow-400 p-3">Environment</Link>
-          <Link href="/contact" class="hover:text-yellow-400 p-3">Contact</Link>
+          <Link 
+            href="/products" 
+            class="hover:text-yellow-400 p-3"
+            @click="isOpen = false"
+          >Products</Link>
+          <Link href="/services" class="hover:text-yellow-400 p-3" @click="isOpen = false">Expertise</Link>
+          <Link href="/company" class="hover:text-yellow-400 p-3" @click="isOpen = false">Company</Link>
+          <Link href="/environment" class="hover:text-yellow-400 p-3" @click="isOpen = false">Environment</Link>
+          <Link href="/contact" class="hover:text-yellow-400 p-3" @click="isOpen = false">Contact</Link>
         </div>
 
         <div class="flex items-center text-sm bg-white/10 lg:text-base backdrop-blur font-medium">
-          <Link href="#" class="hover:text-yellow-400 p-3">Eng</Link>
-          <Link href="#" class="hover:text-yellow-400 p-3">Spa</Link>
+          <Link href="#" class="hover:text-yellow-400 p-3" @click="isOpen = false">Eng</Link>
+          <Link href="#" class="hover:text-yellow-400 p-3" @click="isOpen = false">Spa</Link>
         </div>
       </div>
 
       <!-- Burger menu -->
       <div v-if="!isOpen" class="md:hidden">
-        <button @click="toggle" class="focus:outline-none">
+        <button @click="isOpen = !isOpen" class="focus:outline-none">
           <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -76,11 +84,11 @@ function toggle() {
           v-if="isOpen"
           class="md:hidden absolute inset-x-0 top-0 backdrop-blur py-8 px-10 flex flex-col items-end space-y-6 z-40"
         >
-          <Link href="/products" class="text-lg hover:text-yellow-400" @click="toggle">Products</Link>
-          <Link href="/services" class="text-lg hover:text-yellow-400" @click="toggle">Expertise</Link>
-          <Link href="/company" class="text-lg hover:text-yellow-400" @click="toggle">Company</Link>
-          <Link href="/environment" class="text-lg hover:text-yellow-400" @click="toggle">Environment</Link>
-          <Link href="/contact" class="text-lg hover:text-yellow-400" @click="toggle">Contact</Link>
+          <Link href="/products" class="text-lg hover:text-yellow-400" @click="isOpen = false">Products</Link>
+          <Link href="/services" class="text-lg hover:text-yellow-400" @click="isOpen = false">Expertise</Link>
+          <Link href="/company" class="text-lg hover:text-yellow-400" @click="isOpen = false">Company</Link>
+          <Link href="/environment" class="text-lg hover:text-yellow-400" @click="isOpen = false">Environment</Link>
+          <Link href="/contact" class="text-lg hover:text-yellow-400" @click="isOpen = false">Contact</Link>
         </div>
       </transition>
 
