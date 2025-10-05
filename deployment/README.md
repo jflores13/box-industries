@@ -19,16 +19,24 @@ This directory contains everything you need to deploy your Box Industries Larave
 ### 📄 Documentation
 
 - **`START_HERE.md`** 👉 **READ THIS FIRST** - Quick orientation guide
-  - Which guide to use
+  - Compare deployment methods
+  - Choose the right approach
   - 3-step quick start
-  - Why SSH is better
   - Pre-flight checklist
 
-- **`SSH_DEPLOYMENT_GUIDE.md`** ⭐ **RECOMMENDED** - SSH-based deployment (fast & professional)
+- **`FORGE_VULTR_GUIDE.md`** 🏆 **RECOMMENDED** - Laravel Forge + Vultr deployment (professional)
+  - Automated deployments (push to deploy)
+  - 15-minute setup
+  - Free SSL certificates
+  - Built-in monitoring & queue workers
+  - Zero-downtime deployments
+  - Industry standard for Laravel
+
+- **`SSH_DEPLOYMENT_GUIDE.md`** ⭐ - SSH-based deployment (DIY approach)
   - Simple, straightforward commands
   - Use Git directly on server
   - Automated with scripts
-  - Industry standard approach
+  - Budget-friendly
 
 - **`SSH_CHEATSHEET.md`** 📋 - One-page copy-paste commands for SSH deployment
   - Quick initial setup
