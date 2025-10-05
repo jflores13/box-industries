@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\PartnerSeeder;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -34,6 +33,10 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        $this->call(PartnerSeeder::class);
+        $this->call([
+            ServiceSeeder::class,
+            ProductSeeder::class,
+            PartnerSeeder::class,
+        ]);
     }
 }
