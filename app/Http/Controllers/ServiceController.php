@@ -20,11 +20,12 @@ class ServiceController extends Controller
     /**
      * Display a public listing of the services.
      */
-    public function publicIndex(): Response
+    public function publicIndex(string $lang): Response
     {
         return Inertia::render('Public/Services/Index', [
             'menu_style' => 'black',
             'footer_style' => 'light',
+            'lang' => $lang,
         ]);
     }
 

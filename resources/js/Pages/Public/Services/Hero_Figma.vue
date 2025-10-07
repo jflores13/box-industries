@@ -7,9 +7,7 @@
     >
 
       <h1 class="mt-4 text-black font-extrabold leading-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-10">
-        Overview of 
-        <br class="hidden sm:block" />
-        Our Services
+        {{ servicesTexts.hero_large }}
       </h1>
       <div class="w-full h-auto">
         <img
@@ -19,12 +17,7 @@
         />
       </div>
       <div class="w-full my-10 text-black text-2xl md:text-3xl font-light">
-        <p>
-          Box Industries supports its clients from concept to scalable production. 
-        </p>
-        <p>
-          Discover our full range of packaging solutions here.
-        </p>
+        <p>{{ servicesTexts.hero_small }}</p>
       </div>
 
     </div>
@@ -35,7 +28,9 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
 import WhatsappButton from '@/Components/Buttons/WhatsappButton.vue';
+import { useTexts } from '@/composables/useTexts';
+
+const { texts: servicesTexts } = useTexts('services');
 
 </script>

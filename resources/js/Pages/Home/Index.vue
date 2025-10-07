@@ -6,6 +6,7 @@ import PartnersAndCompany from '@/Pages/Home/PartnersAndCompany.vue';
 import ProductsCarousel from '@/Pages/Home/ProductsCarousel.vue';
 import NewGeneration from '@/Pages/Home/NewGeneration.vue';
 import LearnMore from '@/Pages/Home/LearnMore.vue';
+import { useTexts } from '@/composables/useTexts';
 
 // Props from backend
 const props = defineProps({
@@ -23,13 +24,15 @@ const props = defineProps({
 const page = usePage();
 const user = page.props.auth?.user;
 
+const { texts: homeTexts } = useTexts('home');
+
 // Tell Inertia to keep AppLayout instance alive between pages
 defineOptions({ layout: AppLayout });
 
 </script>
 
 <template>
-  <Head title="Home" />
+  <Head :title="homeTexts.title || 'Home'" />
   <Hero />
   <PartnersAndCompany />
   <ProductsCarousel />

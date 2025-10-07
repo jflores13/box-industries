@@ -2,12 +2,15 @@
 import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Hero from '@/Pages/Contact/Hero.vue';
+import { useTexts } from '@/composables/useTexts';
 
 defineOptions({ layout: AppLayout });
+
+const { texts: contactTexts } = useTexts('contact');
 </script>
 
 <template>
-  <Head title="Contact" />
+  <Head :title="contactTexts.title || 'Contact'" />
 
   <!-- Location and contact information -->
   <Hero />

@@ -7,9 +7,7 @@
     >
 
       <h1 class="mt-4 text-black font-extrabold leading-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-10">
-        The Packaging 
-        <br class="hidden sm:block" />
-        Solutions Company
+        {{ companyTexts.hero_large }}
       </h1>
       <div class="w-full h-auto">
         <img
@@ -19,12 +17,7 @@
         />
       </div>
       <div class="w-full my-10 text-black text-2xl md:text-3xl font-light">
-        <p>
-          Box Industries was founded in 2008 in Arteaga, Coahuila. Since then, we've 
-          specialized in designing and manufacturing custom packaging solutions — 
-          from corrugated boxes to returnable plastic systems — tailored to the 
-          needs of today's industries.
-        </p>
+        <p>{{ companyTexts.hero_small }}</p>
       </div>
 
     </div>
@@ -35,7 +28,9 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
 import WhatsappButton from '@/Components/Buttons/WhatsappButton.vue';
+import { useTexts } from '@/composables/useTexts';
+
+const { texts: companyTexts } = useTexts('company');
 
 </script>

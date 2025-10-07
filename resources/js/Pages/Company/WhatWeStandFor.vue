@@ -2,7 +2,7 @@
   <section class="bg-gray-100">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-16">
-        What we stand for
+        {{ companyTexts.what_we_do_title }}
       </h2>
 
       <div class="space-y-16">
@@ -16,11 +16,9 @@
             />
           </div>
           <div>
-            <h3 class="text-3xl font-bold text-gray-900 mb-6">We analyze</h3>
+            <h3 class="text-3xl font-bold text-gray-900 mb-6">{{ companyTexts.we_analyze_title }}</h3>
             <p class="text-lg text-gray-700 leading-relaxed">
-              Each packaging challenge is an opportunity to create value. 
-              We apply our expertise in delivering efficient logistics 
-              and strategic design solutions.
+              {{ companyTexts.we_analyze_description }}
             </p>
           </div>
         </div>
@@ -35,12 +33,9 @@
             />
           </div>
           <div>
-            <h3 class="text-3xl font-bold text-gray-900 mb-6">We adapt</h3>
+            <h3 class="text-3xl font-bold text-gray-900 mb-6">{{ companyTexts.we_adapt_title }}</h3>
             <p class="text-lg text-gray-700 leading-relaxed">
-              Speed and flexibility are part of our DNA. We enable 
-              our client's success by designing custom-made efficient systems 
-              that operate seamlessly across various logistics and supply 
-              chains.
+              {{ companyTexts.we_adapt_description }}
             </p>
           </div>
         </div>
@@ -55,12 +50,9 @@
             />
           </div>
           <div>
-            <h3 class="text-3xl font-bold text-gray-900 mb-6">We collaborate</h3>
+            <h3 class="text-3xl font-bold text-gray-900 mb-6">{{ companyTexts.we_collaborate_title }}</h3>
             <p class="text-lg text-gray-700 leading-relaxed">
-              Our core skill lies in teamwork — both within our 
-              experienced team and with our clients. We believe in integrating 
-              diverse perspectives to work cooperatively towards achieving 
-              shared goals.
+              {{ companyTexts.we_collaborate_description }}
             </p>
           </div>
         </div>
@@ -75,12 +67,9 @@
             />
           </div>
           <div>
-            <h3 class="text-3xl font-bold text-gray-900 mb-6">We care</h3>
+            <h3 class="text-3xl font-bold text-gray-900 mb-6">{{ companyTexts.we_care_title }}</h3>
             <p class="text-lg text-gray-700 leading-relaxed">
-              From materials to logistics, we care about every step in 
-              our process. Our dedicated teams ensure that nothing leaves 
-              our manufacturing facilities without exceeding — without 
-              compromising performance.
+              {{ companyTexts.we_care_description }}
             </p>
           </div>
         </div>
@@ -88,3 +77,10 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { useTexts } from '@/composables/useTexts';
+
+const { texts: companyTexts } = useTexts('company');
+
+</script>

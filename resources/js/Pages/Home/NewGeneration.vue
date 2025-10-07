@@ -3,7 +3,7 @@
   <section class="bg-box-brown text-white py-12">
     <div class="max-w-6xl mx-auto px-4">
       <h4 class="text-box-yellow-light text-5xl mb-8">
-        Ready for the new generation
+        {{ homeTexts.new_generation_section_title }}
       </h4>
     </div>
     <div class="flex flex-col max-w-6xl mx-auto px-4">
@@ -36,11 +36,13 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted, onUnmounted } from 'vue'
+import { ref } from 'vue'
 import { NewGenSlides as slides } from '@/Pages/Home/data/NewGenSlides'
 import SlideChanger from '@/Components/SlideChanger.vue'
+import { useTexts } from '@/composables/useTexts';
 
 const currentIndex = ref(0)
+const { texts: homeTexts } = useTexts('home');
 
 const next = () => {
   currentIndex.value = (currentIndex.value + 1) % slides.length

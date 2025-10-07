@@ -4,21 +4,28 @@
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div class="space-y-2">
           <h3 class="text-4xl md:text-5xl font-bold text-gray-900">42+</h3>
-          <p class="text-gray-600 font-medium">Employees</p>
+          <p class="text-gray-600 font-medium">{{ companyTexts.numbers_employees }}</p>
         </div>
         <div class="space-y-2">
           <h3 class="text-4xl md:text-5xl font-bold text-gray-900">500+</h3>
-          <p class="text-gray-600 font-medium">Trusted Clients</p>
+          <p class="text-gray-600 font-medium">{{ companyTexts.numbers_clients }}</p>
         </div>
         <div class="space-y-2">
           <h3 class="text-4xl md:text-5xl font-bold text-gray-900">5.5M+</h3>
-          <p class="text-gray-600 font-medium">Packaging Developed</p>
+          <p class="text-gray-600 font-medium">{{ companyTexts.numbers_tonnes }}</p>
         </div>
         <div class="space-y-2">
           <h3 class="text-4xl md:text-5xl font-bold text-gray-900">2008</h3>
-          <p class="text-gray-600 font-medium">Established</p>
+          <p class="text-gray-600 font-medium">{{ companyTexts.numbers_established }}</p>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script setup>
+import { useTexts } from '@/composables/useTexts';
+
+const { texts: companyTexts } = useTexts('company');
+
+</script>

@@ -20,12 +20,13 @@ class ProductController extends Controller
     /**
      * Display a public listing of the products.
      */
-    public function publicIndex(): Response
+    public function publicIndex(string $lang): Response
     {
         return Inertia::render('Public/Products/Index', [
             'products' => Product::all(),
             'menu_style' => 'white',
             'footer_style' => 'dark',
+            'lang' => $lang,
         ]);
     }
 

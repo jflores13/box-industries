@@ -1,21 +1,38 @@
 <script setup>
 import { Link, usePage, router } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import WoodLogo from '@/Components/Images/WoodLogo.vue';
 import WhiteLogo from '@/Components/Images/WhiteLogo.vue';
 import BlackLogo from '@/Components/Images/BlackLogo.vue';
 import TheFooter from '@/Components/TheFooter.vue';
+import { useTexts } from '@/composables/useTexts';
+import { useLocale } from '@/composables/useLocale';
 
 const isOpen = ref(false);
 
 const page = usePage();
+const { texts: menuTexts } = useTexts('menu');
+const { lang, localizedPath, pathForLanguage } = useLocale();
+
+const otherLang = computed(() => (lang.value === 'en' ? 'es' : 'en'));
+const languageLabels: Record<string, string> = {
+  en: 'English',
+  es: 'Español',
+};
+
+const switchLanguageHref = computed(() => pathForLanguage(otherLang.value as 'en' | 'es'));
 
 function logoClick() {
   if (!isOpen.value) {
-    router.visit('/')
+    router.visit(localizedPath());
   } else {
     isOpen.value = !isOpen.value;
   }
+}
+
+function navigate(path: string) {
+  router.visit(localizedPath(path));
+  isOpen.value = false;
 }
 
 </script>
@@ -52,20 +69,23 @@ function logoClick() {
         <div
           class="flex items-center text-sm bg-white/10 lg:text-base backdrop-blur font-medium"
         >
-          <Link 
-            href="/products" 
+          <Link
+            :href="localizedPath('products')"
             class="hover:text-yellow-400 p-3"
             @click="isOpen = false"
-          >Products</Link>
-          <Link href="/services" class="hover:text-yellow-400 p-3" @click="isOpen = false">Expertise</Link>
-          <Link href="/company" class="hover:text-yellow-400 p-3" @click="isOpen = false">Company</Link>
-          <Link href="/environment" class="hover:text-yellow-400 p-3" @click="isOpen = false">Environment</Link>
-          <Link href="/contact" class="hover:text-yellow-400 p-3" @click="isOpen = false">Contact</Link>
+          >{{ menuTexts.products }}</Link>
+          <Link :href="localizedPath('services')" class="hover:text-yellow-400 p-3" @click="isOpen = false">{{ menuTexts.services }}</Link>
+          <Link :href="localizedPath('company')" class="hover:text-yellow-400 p-3" @click="isOpen = false">{{ menuTexts.company }}</Link>
+          <Link :href="localizedPath('environment')" class="hover:text-yellow-400 p-3" @click="isOpen = false">{{ menuTexts.environment }}</Link>
+          <Link :href="localizedPath('contact')" class="hover:text-yellow-400 p-3" @click="isOpen = false">{{ menuTexts.contact }}</Link>
         </div>
 
         <div class="flex items-center text-sm bg-white/10 lg:text-base backdrop-blur font-medium">
-          <Link href="#" class="hover:text-yellow-400 p-3" @click="isOpen = false">Eng</Link>
-          <Link href="#" class="hover:text-yellow-400 p-3" @click="isOpen = false">Spa</Link>
+          <Link
+            :href="switchLanguageHref"
+            class="hover:text-yellow-400 p-3"
+            @click="isOpen = false"
+          >{{ languageLabels[otherLang] }}</Link>
         </div>
       </div>
 
@@ -84,11 +104,16 @@ function logoClick() {
           v-if="isOpen"
           class="md:hidden absolute inset-x-0 top-0 backdrop-blur py-8 px-10 flex flex-col items-end space-y-6 z-40"
         >
-          <Link href="/products" class="text-lg hover:text-yellow-400" @click="isOpen = false">Products</Link>
-          <Link href="/services" class="text-lg hover:text-yellow-400" @click="isOpen = false">Expertise</Link>
-          <Link href="/company" class="text-lg hover:text-yellow-400" @click="isOpen = false">Company</Link>
-          <Link href="/environment" class="text-lg hover:text-yellow-400" @click="isOpen = false">Environment</Link>
-          <Link href="/contact" class="text-lg hover:text-yellow-400" @click="isOpen = false">Contact</Link>
+          <button type="button" class="text-lg hover:text-yellow-400" @click="navigate('products')">{{ menuTexts.products }}</button>
+          <button type="button" class="text-lg hover:text-yellow-400" @click="navigate('services')">{{ menuTexts.services }}</button>
+          <button type="button" class="text-lg hover:text-yellow-400" @click="navigate('company')">{{ menuTexts.company }}</button>
+          <button type="button" class="text-lg hover:text-yellow-400" @click="navigate('environment')">{{ menuTexts.environment }}</button>
+          <button type="button" class="text-lg hover:text-yellow-400" @click="navigate('contact')">{{ menuTexts.contact }}</button>
+          <Link
+            :href="switchLanguageHref"
+            class="text-lg hover:text-yellow-400"
+            @click="isOpen = false"
+          >{{ languageLabels[otherLang] }}</Link>
         </div>
       </transition>
 

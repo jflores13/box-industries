@@ -13,20 +13,19 @@
     <div
       class="relative z-10 flex flex-col justify-center h-[calc(100%-7rem)] max-w-7xl mx-auto px-6"
     >
-      <p class="text-white text-2xl md:text-3xl font-light">Any Time, Any Size</p>
+      <p class="text-white text-2xl md:text-3xl font-light">{{ homeTexts.hero_small }}</p>
 
       <h1
         class="mt-4 text-white font-extrabold leading-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
       >
-        We think inside the box,<br class="hidden sm:block" />
-        so you don’t have to.
+        {{ homeTexts.hero_large }}
       </h1>
 
       <Link
-        href="/products"
+        :href="localizedPath('products')"
         class="mt-10 inline-block bg-box-yellow text-gray-900 font-semibold px-12 py-4 hover:bg-box-yellow/80 transition-colors duration-300 max-w-fit"
       >
-        Our Products
+        {{ homeTexts.products_button }}
       </Link>
     </div>
 
@@ -38,5 +37,10 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import WhatsappButton from '@/Components/Buttons/WhatsappButton.vue';
+import { useTexts } from '@/composables/useTexts';
+import { useLocale } from '@/composables/useLocale';
+
+const { texts: homeTexts } = useTexts('home');
+const { localizedPath } = useLocale();
 
 </script>

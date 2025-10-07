@@ -13,12 +13,9 @@
         </div>
         <div class="col-span-1 flex flex-col justify-start md:justify-end gap-6 items-center md:items-start">
           <div class="flex flex-col gap-6 md:gap-2">
-            <h3 class="text-4xl font-white leading-9">
-              Ready to explore new opportunities together?<br>
-              Get in touch with us.
-            </h3>
-            <Link 
-              href="/contact" 
+            <h3 class="text-4xl font-white leading-9" v-html="footerTexts.get_in_touch_text"></h3>
+            <Link
+              :href="localizedPath('contact')"
               class="w-fit mt-6 md:mt-20 mb-6 md:mb-28  px-6 py-3  hover:font-bold transition-colors"
               :class="{
                 'bg-box-yellow-light hover:bg-box-yellow-light/90 text-box-brown': page.props.footer_style === 'dark',
@@ -26,7 +23,7 @@
               }"
               type="button"
             >
-              Contact Us
+              {{ footerTexts.contact_us_button }}
             </Link>
             <p class="text-xs">
               Box Industries © 2025. Todos Los Derechos Reservados.<br>
@@ -38,7 +35,7 @@
         <div class="col-span-1 flex flex-col justify-between gap-6">
           <div class="w-full mt-2 flex flex-col md:flex-row items-stretch justify-between">
             <div>
-              <p class="text-base hidden md:block">Follow Us</p>
+              <p class="text-base hidden md:block">{{ footerTexts.follow_us }}</p>
             </div>
             <div class="flex items-center justify-center gap-2">
               <a href="https://www.facebook.com/BoxIndustriesMX/" target="_blank">
@@ -70,6 +67,8 @@ import Instagram from './Images/Logos.vue/Instagram.vue';
 import LinkedIn from './Images/Logos.vue/LinkedIn.vue';
 import { Link } from '@inertiajs/vue3';
 import { usePage } from '@inertiajs/vue3';
+import { useTexts } from '@/composables/useTexts';
+import { useLocale } from '@/composables/useLocale';
 
 defineProps({
   mode: {
@@ -79,5 +78,7 @@ defineProps({
 });
 
 const page = usePage();
+const { texts: footerTexts } = useTexts('footer');
+const { localizedPath } = useLocale();
 
 </script>

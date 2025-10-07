@@ -16,10 +16,11 @@ class PartnerController extends Controller
         ]);
     }
 
-    public function publicIndex(): Response
+    public function publicIndex(string $lang): Response
     {
         return Inertia::render('Public/Partners/Index', [
             'partners' => Partner::orderBy('sort_order')->get(),
+            'lang' => $lang,
         ]);
     }
 

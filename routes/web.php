@@ -10,52 +10,61 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Home/Index', [
-        'menu_style' => 'wood',
-        'footer_style' => 'dark',
-        'canLogin' => Route::has('login'),
-        'carouselProducts' => Product::where('on_carrousel', true)->get(),
-        'products' => Product::all(),
-        'partners' => Partner::orderBy('sort_order')->get(),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+Route::redirect('/', '/en');
+
+Route::pattern('lang', 'en|es');
+
+Route::group([
+    'prefix' => '{lang}',
+    'where' => ['lang' => 'en|es'],
+], function () {
+    Route::get('/', function (string $lang) {
+        return Inertia::render('Home/Index', [
+            'menu_style' => 'wood',
+            'footer_style' => 'dark',
+            'canLogin' => Route::has('login'),
+            'carouselProducts' => Product::where('on_carrousel', true)->get(),
+            'products' => Product::all(),
+            'partners' => Partner::orderBy('sort_order')->get(),
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+            'lang' => $lang,
+        ]);
+    })->name('home');
+
+    // Subpages in menu order
+    Route::get('/products', [ProductController::class, 'publicIndex'])->name('products.public.index');
+
+    Route::get('/services', [ServiceController::class, 'publicIndex'])->name('services.public.index');
+
+    Route::get('/company', function (string $lang) {
+        return Inertia::render('Company/Index', [
+            'menu_style' => 'black',
+            'footer_style' => 'dark',
+            'partners' => Partner::orderBy('sort_order')->get(),
+            'lang' => $lang,
+        ]);
+    })->name('company.index');
+
+    Route::get('/environment', function (string $lang) {
+        return Inertia::render('Environment/Index', [
+            'menu_style' => 'black',
+            'footer_style' => 'dark',
+            'lang' => $lang,
+        ]);
+    })->name('environment.index');
+
+    Route::get('/contact', function (string $lang) {
+        return Inertia::render('Contact/Index', [
+            'menu_style' => 'black',
+            'footer_style' => 'light',
+            'lang' => $lang,
+        ]);
+    })->name('contact.index');
+
+    Route::get('/partners', [PartnerController::class, 'publicIndex'])->name('partners.public.index');
 });
-
-// Subpages in menu order
-Route::get('/products', [ProductController::class, 'publicIndex'])->name('products.public.index');
-
-Route::get('/services', [ServiceController::class, 'publicIndex'])->name('services.public.index');
-
-Route::get('/company', function () {
-    return Inertia::render('Company/Index', [
-        'menu_style' => 'black',
-        'footer_style' => 'dark',
-        'partners' => Partner::orderBy('sort_order')->get(),
-    ]);
-})->name('company.index');
-
-Route::get('/environment', function () {
-    return Inertia::render('Environment/Index', [
-        'menu_style' => 'black',
-        'footer_style' => 'dark',
-    ]);
-})->name('environment.index');
-
-Route::get('/contact', function () {
-    return Inertia::render('Contact/Index', [
-        'menu_style' => 'black',
-        'footer_style' => 'light',
-    ]);
-})->name('contact.index');
-
-
-
-Route::get(
-        '/partners', [PartnerController::class, 'publicIndex']
-    )->name('partners.public.index');
 
 Route::get('/admin/dashboard', function () {
     return Inertia::render('Dashboard');

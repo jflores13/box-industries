@@ -14,13 +14,10 @@
       <h1
         class="mt-4 text-white font-extrabold leading-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
       >
-      Packaging that 
-      <br class="hidden sm:block" />
-      fits your world
+      {{ productsTexts.hero_large }}
       </h1>
       <p class="mt-8 text-white text-2xl md:text-3xl font-light">
-        Together, we create packaging that's <br class="hidden sm:block" />
-        ready for whatever the future holds.
+        {{ productsTexts.hero_small }}
       </p>
 
     </div>
@@ -31,7 +28,9 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
 import WhatsappButton from '@/Components/Buttons/WhatsappButton.vue';
+import { useTexts } from '@/composables/useTexts';
+
+const { texts: productsTexts } = useTexts('products');
 
 </script>
