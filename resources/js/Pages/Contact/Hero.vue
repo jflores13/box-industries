@@ -20,10 +20,11 @@
         <div class="w-full md:w-1/3">
             <h2 class="text-2xl font-semibold mb-2">Plant</h2>
             <p class="text-lg">
-              Cerritos Loma Alta 119-A<br>
-              Boca del Oso<br>
-              Industrial Park<br>
-              Saltillo, Coahuila
+              Carretera Loma Alta 1418-A<br>
+              Col. Rural<br>
+              CP 25350 Arteaga, Coahuila, MX.<br>
+              Entrada por Libramiento Oscar<br>
+              Flores Tapia
             </p>
           </div>
           <div class="w-full md:w-1/3">

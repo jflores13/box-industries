@@ -28,25 +28,28 @@
             >
               Contact Us
             </Link>
-            <p class="text-xs">Box Industries © 2025. Todos Los Derechos Reservados.
-              Carretera Loma Alta 1218-A Col. Rural CP 25350 Arteaga, Coahuila.</p>
+            <p class="text-xs">
+              Box Industries © 2025. Todos Los Derechos Reservados.<br>
+              Carretera Loma Alta 1418-A Col. Rural<br>
+              Arteaga, Coahuila, CP 25350
+            </p>
           </div>
         </div>
-        <div class="col-span-1 flex flex-col gap-6">
+        <div class="col-span-1 flex flex-col justify-between gap-6">
           <div class="w-full mt-2 flex flex-col md:flex-row items-stretch justify-between">
             <div>
               <p class="text-base hidden md:block">Follow Us</p>
             </div>
             <div class="flex items-center justify-center gap-2">
-              <Link href="https://google.com" as="button">
+              <a href="https://www.facebook.com/BoxIndustriesMX/" target="_blank">
                 <Facebook :mode="page.props.footer_style === 'light' ? 'light' : 'dark'" class="w-6 h-6 cursor-pointer" />
-              </Link>
-              <Link href="https://google.com" as="button">
+              </a>
+              <a href="https://instagram.com/boxindustriesmx/" target="_blank">
                 <Instagram :mode="page.props.footer_style === 'light' ? 'light' : 'dark'" class="w-6 h-6 cursor-pointer" />
-              </Link>
-              <Link href="https://google.com" as="button">
+              </a>
+              <a href="https://mx.linkedin.com/company/box-industries" target="_blank">
                 <LinkedIn :mode="page.props.footer_style === 'light' ? 'light' : 'dark'" class="w-6 h-6 cursor-pointer" />
-              </Link>
+              </a>
             </div>
           </div>
           <div class="w-full">
