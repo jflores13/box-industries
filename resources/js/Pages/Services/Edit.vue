@@ -11,9 +11,12 @@ const page = usePage();
 const isSuperAdmin = computed(() => page.props.auth.user?.role === 'super_admin');
 
 const form = useForm({
-    name: props.service.name,
-    short_description: props.service.short_description ?? '',
-    long_description: props.service.long_description ?? '',
+    name_en: props.service.name_en,
+    name_es: props.service.name_es,
+    short_en: props.service.short_en ?? '',
+    short_es: props.service.short_es ?? '',
+    long_en: props.service.long_en ?? '',
+    long_es: props.service.long_es ?? '',
 });
 
 function submit() {
@@ -42,20 +45,33 @@ function destroy() {
                 <form @submit.prevent="submit" class="bg-white shadow sm:rounded-lg p-6 space-y-6">
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Name</label>
-                        <input v-model="form.name" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+                        <input v-model="form.name_en" type="text" placeholder="Name (EN)" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                         <span v-if="form.errors.name" class="text-red-500 text-xs">{{ form.errors.name }}</span>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Short Description</label>
-                        <textarea v-model="form.short_description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
-                        <span v-if="form.errors.short_description" class="text-red-500 text-xs">{{ form.errors.short_description }}</span>
+                        <label class="block text-sm font-medium text-gray-700">Name (ES)</label>
+                        <input v-model="form.name_es" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Long Description</label>
-                        <textarea v-model="form.long_description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
-                        <span v-if="form.errors.long_description" class="text-red-500 text-xs">{{ form.errors.long_description }}</span>
+                        <label class="block text-sm font-medium text-gray-700">Short Description (EN)</label>
+                        <textarea v-model="form.short_en" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Short Description (ES)</label>
+                        <textarea v-model="form.short_es" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Long Description (EN)</label>
+                        <textarea v-model="form.long_en" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Long Description (ES)</label>
+                        <textarea v-model="form.long_es" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
                     </div>
 
                     <div class="flex justify-end space-x-2">

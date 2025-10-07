@@ -5,7 +5,7 @@
     </div>
     <div>
       <h3>{{ product.name }}</h3>
-      <p>{{ product.short_description }}</p>
+      <p>{{ product.short_en || product.short_es }}</p>
     </div>
   </div>
 </template>

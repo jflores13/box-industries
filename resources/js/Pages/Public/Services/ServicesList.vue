@@ -10,15 +10,18 @@
         <img :src="service.img_src" alt="Service Image" />
       </div>
       <div class="w-full md:w-1/2 h-full">
-        <h3 class="text-3xl font-bold text-white mb-10">{{ service.name }}</h3>
-        <p class="text-box-yellow mb-4">{{ service.short_description }}</p>
-        <p class="text-white mb-6">{{ service.long_description }}</p>
+        <h3 class="text-3xl font-bold text-white mb-10">{{ service[lang].name }}</h3>
+        <p class="text-box-yellow mb-4">{{ service[lang].short_description }}</p>
+        <p class="text-white mb-6">{{ service[lang].long_description }}</p>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { useLocale } from '@/composables/useLocale';
+
+const { lang } = useLocale();
 
 defineProps({
   services: {

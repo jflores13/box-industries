@@ -12,11 +12,16 @@ const isSuperAdmin = computed(() => page.props.auth.user?.role === 'super_admin'
 
 const form = useForm({
     name: props.product.name,
-    short_description: props.product.short_description ?? '',
-    long_description: props.product.long_description ?? '',
+    short_en: props.product.short_en ?? '',
+    short_es: props.product.short_es ?? '',
+    long_en: props.product.long_en ?? '',
+    long_es: props.product.long_es ?? '',
     slug: props.product.slug,
-    button_text: props.product.button_text ?? '',
+    button_en: props.product.button_en ?? '',
+    button_es: props.product.button_es ?? '',
     button_link: props.product.button_link ?? '',
+    home_en: props.product.home_en ?? '',
+    home_es: props.product.home_es ?? '',
     image_src: props.product.image_src ?? '',
     booklet_src: props.product.booklet_src ?? '',
     product_id: props.product.product_id ?? '',
@@ -63,26 +68,49 @@ function destroy() {
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Short Description</label>
-                        <textarea v-model="form.short_description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
-                        <span v-if="form.errors.short_description" class="text-red-500 text-xs">{{ form.errors.short_description }}</span>
+                        <textarea v-model="form.short_en" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Short description (EN)"></textarea>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Long Description</label>
-                        <textarea v-model="form.long_description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
-                        <span v-if="form.errors.long_description" class="text-red-500 text-xs">{{ form.errors.long_description }}</span>
+                        <label class="block text-sm font-medium text-gray-700">Short Description (ES)</label>
+                        <textarea v-model="form.short_es" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Descripción corta (ES)"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Long Description (EN)</label>
+                        <textarea v-model="form.long_en" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Long description (EN)"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Long Description (ES)</label>
+                        <textarea v-model="form.long_es" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="Descripción larga (ES)"></textarea>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Button Text</label>
-                            <input v-model="form.button_text" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
-                            <span v-if="form.errors.button_text" class="text-red-500 text-xs">{{ form.errors.button_text }}</span>
+                            <label class="block text-sm font-medium text-gray-700">Button Text (EN)</label>
+                            <input v-model="form.button_en" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Button Link</label>
-                            <input v-model="form.button_link" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
-                            <span v-if="form.errors.button_link" class="text-red-500 text-xs">{{ form.errors.button_link }}</span>
+                            <label class="block text-sm font-medium text-gray-700">Button Text (ES)</label>
+                            <input v-model="form.button_es" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Button Link</label>
+                        <input v-model="form.button_link" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+                        <span v-if="form.errors.button_link" class="text-red-500 text-xs">{{ form.errors.button_link }}</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Home Text (EN)</label>
+                            <input v-model="form.home_en" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Home Text (ES)</label>
+                            <input v-model="form.home_es" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                         </div>
                     </div>
 

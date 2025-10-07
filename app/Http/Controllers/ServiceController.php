@@ -37,12 +37,22 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'short_description' => ['nullable', 'string'],
-            'long_description' => ['nullable', 'string'],
+            'name_en' => ['required', 'string', 'max:255'],
+            'name_es' => ['required', 'string', 'max:255'],
+            'short_en' => ['nullable', 'string'],
+            'short_es' => ['nullable', 'string'],
+            'long_en' => ['nullable', 'string'],
+            'long_es' => ['nullable', 'string'],
         ]);
 
-        Service::create($validated);
+        $service = new Service();
+        $service->name_en = $validated['name_en'];
+        $service->name_es = $validated['name_es'];
+        $service->short_en = $validated['short_en'] ?? null;
+        $service->short_es = $validated['short_es'] ?? null;
+        $service->long_en = $validated['long_en'] ?? null;
+        $service->long_es = $validated['long_es'] ?? null;
+        $service->save();
 
         return redirect()->route('services.index');
     }
@@ -57,12 +67,21 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'short_description' => ['nullable', 'string'],
-            'long_description' => ['nullable', 'string'],
+            'name_en' => ['required', 'string', 'max:255'],
+            'name_es' => ['required', 'string', 'max:255'],
+            'short_en' => ['nullable', 'string'],
+            'short_es' => ['nullable', 'string'],
+            'long_en' => ['nullable', 'string'],
+            'long_es' => ['nullable', 'string'],
         ]);
 
-        $service->update($validated);
+        $service->name_en = $validated['name_en'];
+        $service->name_es = $validated['name_es'];
+        $service->short_en = $validated['short_en'] ?? null;
+        $service->short_es = $validated['short_es'] ?? null;
+        $service->long_en = $validated['long_en'] ?? null;
+        $service->long_es = $validated['long_es'] ?? null;
+        $service->save();
 
         return redirect()->route('services.index');
     }

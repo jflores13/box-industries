@@ -11,10 +11,15 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'short_description',
-        'long_description',
+        'short_en',
+        'short_es',
+        'long_en',
+        'long_es',
         'slug',
-        'button_text',
+        'button_en',
+        'button_es',
+        'home_en',
+        'home_es',
         'button_link',
         'image_src',
         'booklet_src',

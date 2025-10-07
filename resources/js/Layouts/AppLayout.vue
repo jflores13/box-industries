@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Link, usePage, router } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 import WoodLogo from '@/Components/Images/WoodLogo.vue';
@@ -15,7 +15,7 @@ const { texts: menuTexts } = useTexts('menu');
 const { lang, localizedPath, pathForLanguage } = useLocale();
 
 const otherLang = computed(() => (lang.value === 'en' ? 'es' : 'en'));
-const languageLabels: Record<string, string> = {
+const languageLabels = {
   en: 'English',
   es: 'Español',
 };

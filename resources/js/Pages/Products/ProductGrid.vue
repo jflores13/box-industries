@@ -23,13 +23,10 @@
                     class="flex flex-col justify-center p-6"
                 >
                     <h2 class="text-3xl font-semibold mb-6 text-black">
-                        {{ product.name }}® - {{  product.short_description }}
+                        {{ product.name }}® - {{ product.short_en || product.short_es }}
                     </h2>
                     <p class="text-gray-700 mb-6">
-                        {{
-                            product.long_description ||
-                            "No description provided."
-                        }}
+                        {{ product.long_en || product.long_es || "No description provided." }}
                     </p>
                     <a
                         v-if="product.button_link"
@@ -38,7 +35,7 @@
                         class="bg-box-brown text-box-yellow-light px-4 py-2 hover:bg-box-brown/80 w-fit"
                         type="button"
                     >
-                        {{ product.button_text || "Get a custom quote" }}
+                        {{ product.button_en || product.button_es || "Get a custom quote" }}
                     </a>
                 </div>
             </div>
