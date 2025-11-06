@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -62,6 +63,8 @@ Route::group([
             'lang' => $lang,
         ]);
     })->name('contact.index');
+
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
     Route::get('/partners', [PartnerController::class, 'publicIndex'])->name('partners.public.index');
 });

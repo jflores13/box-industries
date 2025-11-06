@@ -26,6 +26,5 @@ const { texts: companyTexts } = useTexts('company');
       <div class="w-full max-w-7xl mx-auto px-6 text-2xl">
         <p class="leading-relaxed">{{ companyTexts.our_experience }}</p>
       </div>
-      <Partners class="w-full max-w-7xl mx-auto" />
     </section>
 </template>

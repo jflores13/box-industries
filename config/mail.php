@@ -115,4 +115,19 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Default "To" Address For App Notifications
+    |--------------------------------------------------------------------------
+    |
+    | Optionally route app-generated emails (like the contact form) to a
+    | specific inbox without hardcoding. Configure via env.
+    |
+    */
+
+    'to' => [
+        'address' => env('MAIL_TO_ADDRESS'),
+        'name' => env('MAIL_TO_NAME'),
+    ],
+
 ];

@@ -42,11 +42,9 @@ export const Texts = {
     },
     company: {
       title: 'Nuestra Compañía',
-      hero_small: 'Box Industries fue fundada en 2008 en Arteaga, Coahuila. Desde entonces, nos hemos especializado en diseñar y fabricar soluciones de empaque personalizadas — desde cajas corrugadas hasta sistemas plásticos retornables — adaptadas a las necesidades de las industrias actuales.',
+      hero_small: 'Box Industries fue fundada en 2008 en Saltillo, Coahuila. Desde entonces, nos hemos especializado en diseñar y fabricar soluciones de empaque personalizadas — desde cajas corrugadas hasta sistemas plásticos retornables — adaptadas a las necesidades de las industrias actuales.',
       hero_large: 'The Packaging Solutions Company',
       numbers_employees: 'Empleados',
-      numbers_clients: 'Clientes',
-      numbers_tonnes: 'Toneladas de cajas',
       numbers_established: 'Fundada en',
       what_we_do_title: 'Lo que nos representa',
       we_analyze_title: 'Analizamos',
@@ -146,7 +144,7 @@ export const Texts = {
     },
     company: {
       title: 'Our Company',
-      hero_small: 'Box Industries was founded in 2008 in Arteaga, Coahuila. Since then, we have specialized in designing and manufacturing custom packaging solutions — from corrugated boxes to returnable plastic systems — tailored to the needs of today´s industries.',
+      hero_small: 'Box Industries was founded in 2008 in Saltillo, Coahuila. Since then, we have specialized in designing and manufacturing custom packaging solutions — from corrugated boxes to returnable plastic systems — tailored to the needs of today´s industries.',
       hero_large: 'The Packaging Solutions Company',
       numbers_employees: 'Employees',
       numbers_clients: 'Trusted Clients',

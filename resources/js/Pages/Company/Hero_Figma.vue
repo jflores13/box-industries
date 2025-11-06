@@ -10,9 +10,18 @@
         {{ companyTexts.hero_large }}
       </h1>
       <div class="w-full h-auto">
+        <h4 class="text-4xl font-bold text-gray-900 mb-1">2009</h4>
         <img
           src="/img/Company.jpg"
           alt="Company Hero"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="w-full h-auto">
+        <h4 class="text-4xl font-bold text-gray-900 mb-1 mt-8">2025</h4>
+        <img
+          src="/img/Company2025.webp"
+          alt="Company Now"
           class="w-full h-full object-cover"
         />
       </div>

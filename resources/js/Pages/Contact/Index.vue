@@ -1,12 +1,43 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, useForm, usePage } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Hero from '@/Pages/Contact/Hero.vue';
 import { useTexts } from '@/composables/useTexts';
+import { computed } from 'vue';
 
 defineOptions({ layout: AppLayout });
 
 const { texts: contactTexts } = useTexts('contact');
+
+const page = usePage();
+const lang = page.props.lang ?? 'en';
+
+const form = useForm({
+  first_name: '',
+  last_name: '',
+  email: '',
+  company: '',
+  message: '',
+  lang,
+});
+
+const isSent = computed(() => Boolean(page.props.flash?.success));
+
+function submit() {
+  if (isSent.value) {
+    return;
+  }
+  form.post(route('contact.store', { lang }), {
+    preserveScroll: true,
+    onSuccess: () => {
+      form.reset('first_name', 'last_name', 'email', 'company', 'message');
+    },
+  });
+}
+
+function reloadPage() {
+  window.location.reload();
+}
 </script>
 
 <template>
@@ -21,7 +52,7 @@ const { texts: contactTexts } = useTexts('contact');
       <h2 class="text-5xl md:text-6xl font-bold mb-16 text-box-yellow-light leading-tight">
         {{ contactTexts.form_title }}
       </h2>
-      <form class="space-y-12">
+      <form class="space-y-12" @submit.prevent="submit">
         <!-- First row: First Name and Last Name -->
         <div class="grid md:grid-cols-2 gap-12">
           <div class="space-y-3">
@@ -31,9 +62,12 @@ const { texts: contactTexts } = useTexts('contact');
             <input 
               id="first_name" 
               type="text" 
+              :disabled="isSent"
+              v-model="form.first_name"
               :placeholder="contactTexts.form_name_placeholder"
               class="contact-form-input"
             />
+            <div v-if="form.errors.first_name" class="text-red-300 text-sm">{{ form.errors.first_name }}</div>
           </div>
           <div class="space-y-3">
             <label for="last_name" class="contact-form-label">
@@ -42,9 +76,12 @@ const { texts: contactTexts } = useTexts('contact');
             <input 
               id="last_name" 
               type="text" 
+              :disabled="isSent"
+              v-model="form.last_name"
               :placeholder="contactTexts.form_name_placeholder"
               class="contact-form-input"
             />
+            <div v-if="form.errors.last_name" class="text-red-300 text-sm">{{ form.errors.last_name }}</div>
           </div>
         </div>
         
@@ -57,9 +94,12 @@ const { texts: contactTexts } = useTexts('contact');
             <input 
               id="email" 
               type="email" 
+              :disabled="isSent"
+              v-model="form.email"
               :placeholder="contactTexts.form_email_placeholder"
               class="contact-form-input"
             />
+            <div v-if="form.errors.email" class="text-red-300 text-sm">{{ form.errors.email }}</div>
           </div>
           <div class="space-y-3">
             <label for="company" class="contact-form-label">
@@ -68,9 +108,12 @@ const { texts: contactTexts } = useTexts('contact');
             <input 
               id="company" 
               type="text" 
+              :disabled="isSent"
+              v-model="form.company"
               :placeholder="contactTexts.form_company_placeholder"
               class="contact-form-input"
             />
+            <div v-if="form.errors.company" class="text-red-300 text-sm">{{ form.errors.company }}</div>
           </div>
         </div>
         
@@ -82,19 +125,27 @@ const { texts: contactTexts } = useTexts('contact');
           <textarea 
             id="message" 
             rows="6" 
+            :disabled="isSent"
+            v-model="form.message"
             :placeholder="contactTexts.form_message_placeholder"
             class="contact-form-input resize-none"
           ></textarea>
+          <div v-if="form.errors.message" class="text-red-300 text-sm">{{ form.errors.message }}</div>
         </div>
         
         <!-- Submit button -->
         <div class="pt-8">
           <button 
             type="submit" 
+            :disabled="isSent || form.processing"
             class="bg-box-yellow-light text-box-brown px-8 py-4 text-lg font-semibold hover:bg-box-yellow-light/90 transition-colors duration-200"
           >
             {{ contactTexts.form_submit_button }}
           </button>
+          <div v-if="isSent" class="mt-4 flex items-center gap-4">
+            <p class="text-green-300">Your message was sent. Reload the page to send another.</p>
+            <button type="button" @click="reloadPage" class="underline text-green-200 hover:text-green-100">Reload now</button>
+          </div>
         </div>
       </form>
     </div>
