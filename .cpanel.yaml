@@ -1,4 +1,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH="/home/boxindus/public_html"
+    - /usr/bin/php -d detect_unicode=0 /usr/bin/composer install --no-dev --optimize-autoloader
+    - /usr/bin/php artisan config:cache
+    - /usr/bin/php artisan route:cache
     - /usr/bin/rsync -a --delete --exclude='.git' --exclude='.cpanel.yml' ./ "$DEPLOYPATH"
